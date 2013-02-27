@@ -1,0 +1,4 @@
+genericons
+==========
+
+Genericons WordPress Plugin
