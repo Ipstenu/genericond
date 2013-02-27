@@ -1,4 +1,3 @@
-genericons
-==========
+#Genericons for WordPress
 
-Genericons WordPress Plugin
+This is the totally trunk, do not use, version of Genericons for WordPress
