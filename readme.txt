@@ -1,6 +1,6 @@
-=== Genericons ===
+=== Genericon'd ===
 Contributors: ipstenu
-Tags: icons, genericon, font icon, UI, icon font
+Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
 Tested up to: 3.6
 Stable tag: 1.0
@@ -17,56 +17,26 @@ A full list of the Genericons icons is available: [http://genericons.com/](http:
 
 To use any of the Genericons icons on your WordPress site you can use basic HTML (for inserting in themes and functions) or shortcodes (for use in posts or widgets)
 
-HTML: 
-Twitter icon
+To display the Twitter icon
 
-`<div class="genericon genericon-twitter"></div>`
+HTML: `<div class="genericon genericon-twitter"></div>`
 
-__Shortcode Option__
-
-Don't want to worry about HTML tags?  You can use a shortcode in your posts, pages and even widgets to display a Genericons icon.
-
-The shortcode to use is `[genericon icon=name-of-icon]`, where icon=X is the name of the icon you would like to use.
-
-
-Share icon
-
-`[genericon icon=share]`
-
-Twitter icon
-
-`[genericon icon=twitter]`
-
-Left Arrow
-
-`[genericon icon=leftarrow]`
+Shortcode: `[genericon icon=twitter]`
 
 == Installation ==
 
 Install as a normal WordPress Plugin
 
-Add shortcode to your posts, pages and even widgets to display a Genericons icon.
+Add shortcode or HTML to your posts, pages and even widgets to display a Genericons icon.
 
-The shortcode to use is `[genericon icon=name-of-icon]`, where icon=X is the name of the icon you would like to use.
+== Frequently Asked Questions ==
 
-**Example:**
+= Aren't they called Genericons with an S? =
 
-`[genericon icon=twitter]`
-
-
-4. You can use HTML by adding the appropiate class to a `<div>` element.
-
-
-**Example:**
-
-`<div class="genericon genericon-twitter"></div>`
-
+Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have been genericonified!' I was in a The Guild frame of mind. Also since this is not the official plugin, I didn't want to use that slug.
 
 == Screenshots ==
 
-1.  HTML code samples
-2.  Shortcode samples
-3.  Full icon list
 
 == Changelog ==
 
