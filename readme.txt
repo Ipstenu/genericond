@@ -35,10 +35,37 @@ Add shortcode or HTML to your posts, pages and even widgets to display a Generic
 
 Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have been genericonified!' I was in a The Guild frame of mind. Also since this is not the official plugin, I didn't want to use that slug.
 
+= What are all the codes to use? =
+
+If you're like me, you forget this alllll the time. On your WP dashboard, go to Apperance -> Genericon'd. The page there will show you everything you need to know about using Genericons.
+
+= Can I add it to menus? =
+
+Yes! If you use CSS classes, you can apply a class like this:  `genericon genericon-facebook` You may need to jigger about with css to make the layout perfect.
+
+= Why don't these work on IE 7? =
+
+Genericons itself <strong>does not come with fallback icons by default</strong> -- therefore you have to create them yourself. If you are using HTML similar to this example: <code>&lt;span class="genericon genericon-warning"&gt;&lt;/span&gt;</code>
+
+You can use the asterisk hack to serve a different icon to IE7 once you have saved the fallback icons to your project:
+
+<pre>.genericon-warning {
+    *background: url(fallback-icon.png) no-repeat center center;
+    *text-indent: 100%;
+}
+</pre>
+
 == Screenshots ==
 
+1. Genericon'd help page
 
 == Changelog ==
+
+= 1.1 =
+* 
+* Tweaks and adjustments. 
+* Moving documentation to it's own page for easier updating.
+
 
 = 1.0 =
 * 2013-02-27
