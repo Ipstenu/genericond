@@ -1,6 +1,5 @@
 /**
 Genericons Helper CSS
-
 */
 
 
@@ -21,14 +20,13 @@ Genericons Helper CSS
  * All Genericons
  */
 
-.genericon {display: inline-block;width: 16px;height: 16px;-webkit-font-smoothing: antialiased;font-size: 16px;line-height: 1;font-family: 'Genericons';text-decoration: inherit;font-weight: normal;font-style: normal;vertical-align: top;}
+.genericon {display: inline-block;-webkit-font-smoothing: antialiased;font-size: 1em;line-height: 1;font-family: 'Genericons';text-decoration: inherit;font-weight: normal;font-style: normal;vertical-align: middle;}
 
 /**
  * IE7 and IE6 hacks
  */
 
 .genericon {*overflow: auto;*zoom: 1;*display: inline;}
-
 
 /**
  * Individual icons
@@ -104,3 +102,14 @@ Genericons Helper CSS
 .genericon-rightarrow:before {content: '\f501';}
 .genericon-downarrow:before {content: '\f502';}
 .genericon-leftarrow:before {content: '\f503';}
+
+/**
+ * Everything from here down is done by Ipstenu for Genericon'd
+ */
+
+/* Alternative sizes */
+.genericon-2x {font-size: 2em;}
+.genericon-3x {font-size: 3em;}
+.genericon-4x {font-size: 4em;}
+.genericon-5x {font-size: 5em;}
+.genericon-6x {font-size: 6em;}
