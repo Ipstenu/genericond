@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 1.2
+Version: 1.3b
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -107,6 +107,10 @@ class GenericonsHELF {
         <h3>Usage Example</h3>
 
         <p><div alt="f202" class="genericon genericon-twitter"></div> is made by either <code>[genericon icon=twitter]</code> or <code>&lt;div alt="f202" class="genericon genericon-twitter"&gt;&lt;/div&gt;</code> - You can also use <code>&lt;i&gt;</code> and <code>&lt;span&gt;</code> tags.</p>
+        
+        <p>On the fly color changing means you can make a Twitter Blue icon: <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
+        
+        <p>On the fly resize lets you make a Facebook icon bigger: <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
         
         <h3>Available Genericons</h3>
 

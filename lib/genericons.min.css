@@ -20,7 +20,7 @@ Genericons Helper CSS
  * All Genericons
  */
 
-.genericon {display: inline-block;-webkit-font-smoothing: antialiased;font-size: 1em;line-height: 1;font-family: 'Genericons';text-decoration: inherit;font-weight: normal;font-style: normal;vertical-align: middle;}
+.genericon {display: inline-block;-webkit-font-smoothing: antialiased;font-size: 16px;line-height: 1;font-family: 'Genericons';text-decoration: inherit;font-weight: normal;font-style: normal;vertical-align: middle;}
 
 /**
  * IE7 and IE6 hacks
@@ -108,8 +108,9 @@ Genericons Helper CSS
  */
 
 /* Alternative sizes */
-.genericon-2x {font-size: 2em;}
-.genericon-3x {font-size: 3em;}
-.genericon-4x {font-size: 4em;}
-.genericon-5x {font-size: 5em;}
-.genericon-6x {font-size: 6em;}
+.genericon-1x {font-size: 16px;}
+.genericon-2x {font-size: 32px;}
+.genericon-3x {font-size: 48px;}
+.genericon-4x {font-size: 64px;}
+.genericon-5x {font-size: 80px;}
+.genericon-6x {font-size: 96px;}

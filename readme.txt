@@ -21,7 +21,7 @@ To display the Twitter icon:
 
 HTML: `<div class="genericon genericon-twitter"></div>` or `<i class="genericon genericon-twitter"></i>`
 
-Shortcode: `[genericon icon=twitter]` or `[genericon icon=twitter size=32]`
+Shortcode: `[genericon icon=twitter]`
 
 == Installation ==
 
@@ -81,6 +81,11 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 1.3 =
+*
+* Tumblr?
+* Changed resize to use multiples of 16px, after talking to Joen.
 
 = 1.2 =
 * 2013-03-07
