@@ -17,7 +17,6 @@ A full list of the Genericons icons is available: [http://genericons.com/](http:
 
 To use any of the Genericons icons on your WordPress site you can use basic HTML (for inserting in themes and functions) or shortcodes (for use in posts or widgets). You can adjust the size of the icons via css or, when using the shortcode, the size attribute. Default size is 16px.
 
-<<<<<<< HEAD
 To display the Twitter icon:
 
 HTML: `<div class="genericon genericon-twitter"></div>` or `<i class="genericon genericon-twitter"></i>`
@@ -41,19 +40,11 @@ Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have be
 If you're like me, you forget this alllll the time. On your WP dashboard, go to Apperance -> Genericon'd. The page there will show you everything you need to know about using Genericons.
 
 = Can I add it to menus? =
-=======
-To display the Twitter icon
-
-HTML: `<i class="genericon genericon-twitter"></i>`
-
-Shortcode: `[genericon icon=twitter]`
->>>>>>> 9f12bd802200116efcc280184be034a986f3dca0
 
 Yes! If you use CSS classes, you can apply a class like this:  `genericon genericon-facebook` You may need to jigger about with css to make the layout perfect.
 
 = How do I change colors? =
 
-<<<<<<< HEAD
 The power of CSS! If you want to change the color to red for all genericons, add `.genericon {color:red;}` to your theme's CSS. If you just want Twitter to be blue, add `.genericon-twitter {color:blue;}` and so on and so forth. Colors are based on font, you see.
 
 = Okay, but I want to change color in just this one use... =
@@ -83,28 +74,10 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
     *text-indent: 100%;
 }
 </pre>
-=======
-Add shortcode or HTML to your posts, pages and even widgets to display a Genericons icon.
-
-== Frequently Asked Questions ==
-
-= Aren't they called Genericons with an S? =
-
-Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have been genericonified!' I was in a The Guild frame of mind. Also since this is not the official plugin, I didn't want to use that slug.
-
-= What are all the codes to use? =
-
-If you're like me, you forget this alllll the time. On your WP dashboard, go to Apperance -> Genericon'd. The page there will show you everything you need to know about using Genericons.
-
-= Can I add it to menus? =
-
-Yes! If you use CSS classes, you can apply a class like this:  `genericon genericon-facebook` You may need to jigger about with css to make the layout perfect.
->>>>>>> 9f12bd802200116efcc280184be034a986f3dca0
 
 == Screenshots ==
 
 1. Genericon'd help page
-<<<<<<< HEAD
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
@@ -124,15 +97,6 @@ Yes! If you use CSS classes, you can apply a class like this:  `genericon generi
 * 2013-03-06
 * Tweaks and adjustments. 
 * New banner (thanks to Joen)
-=======
-
-== Changelog ==
-
-= 1.1 =
-* 
-* Tweaks and adjustments. Documentation (fixed a h2/h3 mismatch)
-* Added new icon (Tumblr) thanks to Joen adding it to the Genericons pack!
->>>>>>> 9f12bd802200116efcc280184be034a986f3dca0
 
 = 1.0 =
 * 2013-02-27
