@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 1.3b
+Version: 1.3
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -54,7 +54,7 @@ class GenericonsHELF {
 
     public function register_plugin_styles() {
         global $wp_styles;
-        wp_enqueue_style( 'genericons-styles', plugins_url( 'lib/genericons.min.css?ver1.2', __FILE__  ) );
+        wp_enqueue_style( 'genericons-styles', plugins_url( 'lib/genericons.min.css?ver1.3', __FILE__  ) );
     }
 
     public function setup_shortcode( $params ) {
@@ -156,6 +156,7 @@ class GenericonsHELF {
                     <li><div alt="f211" class="genericon genericon-flickr"></div> flickr</li>
                     <li><div alt="f212" class="genericon genericon-vimeo"></div> vimeo</li>
                     <li><div alt="f213" class="genericon genericon-youtube"></div> youtube</li>
+                    <li><div alt="f214" class="genericon genericon-tumblr"></div> tumblr</li>
                 </ul>   
             </td>
             </tr>
