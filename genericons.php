@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 1.3
+Version: 1.3.1
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -151,8 +151,8 @@ class GenericonsHELF {
                     <li><div alt="f206" class="genericon genericon-googleplus"></div> googleplus</li>
                     <li><div alt="f207" class="genericon genericon-linkedin"></div> linkedin</li>
                     <li><div alt="f208" class="genericon genericon-linkedin-alt"></div> linkedin-alt</li>
-                    <li><div alt="f209" class="genericon genericon-pinterest"></div> pintrest</li>
-                    <li><div alt="f210" class="genericon genericon-pinterest-alt"></div> pintrest-alt</li>
+                    <li><div alt="f209" class="genericon genericon-pinterest"></div> pinterest</li>
+                    <li><div alt="f210" class="genericon genericon-pinterest-alt"></div> pinterest-alt</li>
                     <li><div alt="f211" class="genericon genericon-flickr"></div> flickr</li>
                     <li><div alt="f212" class="genericon genericon-vimeo"></div> vimeo</li>
                     <li><div alt="f213" class="genericon genericon-youtube"></div> youtube</li>
