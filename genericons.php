@@ -61,7 +61,8 @@ class GenericonsHELF {
         $genericonatts = shortcode_atts( array(
                     'icon'  => '',
                     'size'  => '',
-                    'color' => ''
+                    'color' => '',
+                    'repeat' = '1'
                 ), $params );
         
         $genericon_size = "genericon-";
@@ -73,6 +74,10 @@ class GenericonsHELF {
         else $genericon_color = 'inherit';
                 
         $genericon = '<i style="color:'.$genericon_color.';" class="genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.'"></i>';
+        
+        for ($i = 2; $i <= $genericonatts['repeat']; $i++) {
+	        $genericon .= $genericon;
+	    }
 
         return $genericon;
     }
@@ -106,12 +111,14 @@ class GenericonsHELF {
 
         <h3>Usage Example</h3>
 
-        <p><div alt="f202" class="genericon genericon-twitter"></div> is made by either <code>[genericon icon=twitter]</code> or <code>&lt;div alt="f202" class="genericon genericon-twitter"&gt;&lt;/div&gt;</code> - You can also use <code>&lt;i&gt;</code> and <code>&lt;span&gt;</code> tags.</p>
+        <p><div alt="f202" class="genericon genericon-twitter"></div> is made by either <code>&#091;genericon icon=twitter&#093;</code> or <code>&lt;div alt="f202" class="genericon genericon-twitter"&gt;&lt;/div&gt;</code> - You can also use <code>&lt;i&gt;</code> and <code>&lt;span&gt;</code> tags.</p>
         
         <p>On the fly color changing means you can make a Twitter Blue icon: <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
         
         <p>On the fly resize lets you make a Facebook icon bigger: <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
-        
+
+        <p>Want to repeat a Genericon multiple times? Like a star? <code>&#091;genericon icon=star repeat=3&#093;</code></p>
+                
         <h3>Available Genericons</h3>
 
         	<div class="icons">
