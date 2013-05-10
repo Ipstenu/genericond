@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 1.3.1
+Version: 2.0
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -59,10 +59,10 @@ class GenericonsHELF {
 
     public function setup_shortcode( $params ) {
         $genericonatts = shortcode_atts( array(
-                    'icon'  => '',
-                    'size'  => '',
-                    'color' => '',
-                    'repeat' = '1'
+                    'icon'   => '',
+                    'size'   => '',
+                    'color'  => '',
+                    'repeat' => '1'
                 ), $params );
         
         $genericon_size = "genericon-";
@@ -73,10 +73,11 @@ class GenericonsHELF {
         if ( !is_null($genericonatts['color']) ) $genericon_color = $genericonatts['color'];
         else $genericon_color = 'inherit';
                 
-        $genericon = '<i style="color:'.$genericon_color.';" class="genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.'"></i>';
+        $genericon_code = '<i style="color:'.$genericon_color.';" class="genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.'"></i>';
+        $genericon = $genericon_code;
         
-        for ($i = 2; $i <= $genericonatts['repeat']; $i++) {
-	        $genericon .= $genericon;
+        for ($i = 2 ; $i <= $genericonatts['repeat']; ++$i) {
+	        $genericon .= $genericon_code;
 	    }
 
         return $genericon;
@@ -164,6 +165,7 @@ class GenericonsHELF {
                     <li><div alt="f212" class="genericon genericon-vimeo"></div> vimeo</li>
                     <li><div alt="f213" class="genericon genericon-youtube"></div> youtube</li>
                     <li><div alt="f214" class="genericon genericon-tumblr"></div> tumblr</li>
+                    <li><div alt="f215" class="genericon genericon-instagram"></div> instagram</li>
                 </ul>   
             </td>
             </tr>
@@ -219,6 +221,27 @@ class GenericonsHELF {
                     <li><div alt="f421" class="genericon genericon-minimize"></div> minimize</li>
                     <li><div alt="f422" class="genericon genericon-maximize"></div> maximize</li>
                     <li><div alt="f423" class="genericon genericon-404"></div> 404</li>
+                    <li><div alt="f424" class="genericon genericon-spam"></div> spam</li>
+                    <li><div alt="f425" class="genericon genericon-summary"></div> summary</li>
+                    <li><div alt="f426" class="genericon genericon-cloud"></div> cloud</li>
+                    <li><div alt="f427" class="genericon genericon-key"></div> key</li>
+                    <li><div alt="f428" class="genericon genericon-dot"></div> dot</li>
+                    <li><div alt="f429" class="genericon genericon-next"></div> next</li>
+                    <li><div alt="f430" class="genericon genericon-previous"></div> previous</li>
+                    <li><div alt="f431" class="genericon genericon-expand"></div> expand</li>
+                    <li><div alt="f432" class="genericon genericon-collapse"></div> collapse</li>
+                    <li><div alt="f433" class="genericon genericon-dropdown"></div> dropdown</li>
+                    <li><div alt="f434" class="genericon genericon-dropdown-left"></div> dropdown-left</li>
+                    <li><div alt="f435" class="genericon genericon-top"></div> top</li>
+                    <li><div alt="f436" class="genericon genericon-draggable"></div> draggable</li>
+                    <li><div alt="f437" class="genericon genericon-phone"></div> phone</li>
+                    <li><div alt="f438" class="genericon genericon-send-to-phone"></div> send-to-phone</li>
+                    <li><div alt="f439" class="genericon genericon-plugin"></div> plugin</li>
+                    <li><div alt="f440" class="genericon genericon-cloud-download"></div> cloud-download</li>
+                    <li><div alt="f441" class="genericon genericon-cloud-upload"></div> cloud-upload</li>
+                    <li><div alt="f442" class="genericon genericon-external"></div> external</li>
+                    <li><div alt="f443" class="genericon genericon-document"></div> document</li>
+                    <li><div alt="f444" class="genericon genericon-book"></div> book</li>
                 </ul>   
             </td>
             </tr>

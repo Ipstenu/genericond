@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.3.1
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,10 @@ Sure can! Use this: `[genericon icon=twitter size=2x]`
 
 You can use 2x through 6x. Anything else punts it to 1x.
 
+= I want to repeat an icon =
+
+You mean like this: `[genericon icon=star repeat=4]`
+
 = How about changing the hover-color? =
 
 While I certainly could write that in, I decided not to. You certainly can do this with CSS, however I feel you should only be changing color when there's an action, like hovering over a link, and generally you've already done that. But if you want to manually do it in your CSS, it would go like this: `.genericon-twitter:hover {background-color:pink;color:purple;}`
@@ -81,6 +85,10 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 2.0 =
+* 2013-05-10
+* 25 new (or updated) Genericons by Joen!
 
 = 1.3.1 =
 * 2013-04-11 <em>NON CRITICAL UPDATE</em>
