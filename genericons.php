@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 2.0
+Version: 2.1
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -50,6 +50,11 @@ class GenericonsHELF {
         add_filter( 'widget_text', 'do_shortcode' );
         add_action( 'admin_menu', array( $this, 'add_settings_page'));
         add_filter('plugin_row_meta', array( $this, 'donate_link'), 10, 2);
+        add_filter('wp_nav_menu', array( $this, 'shortcode_in_menu'));
+    }
+
+    public function shortcode_in_menu() {
+    	return do_shortcode( $menu );
     }
 
     public function register_plugin_styles() {
