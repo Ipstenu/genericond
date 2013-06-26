@@ -54,7 +54,7 @@ class GenericonsHELF {
 
     public function register_plugin_styles() {
         global $wp_styles;
-        wp_enqueue_style( 'genericons-styles', plugins_url( 'lib/genericons.min.css?ver1.3', __FILE__  ) );
+        wp_enqueue_style( 'genericons-styles', plugins_url( 'lib/genericons.min.css?ver2.0.9', __FILE__  ) );
     }
 
     public function setup_shortcode( $params ) {
