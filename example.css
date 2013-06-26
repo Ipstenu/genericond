@@ -1,25 +1,10 @@
-.icons {
-	overflow: hidden;
-	padding: 10px 0;
-}
-ul.the-icons li, .icons div {
-	cursor: pointer;
-	float: left;
-	margin: 0 30px 30px 0;
-}
-
+.icons {overflow: hidden;padding: 10px 0;}
+ul.the-icons li, .icons div {cursor: pointer;float: left;margin: 0 30px 30px 0;}
 .the-icons li {width: 200px;cursor: pointer;line-height: 32px;height: 32px;padding: 5px;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;color:grey;}
-.the-icons li:hover {background-color:#fa8072;color:black;}
-
+.the-icons li:hover {background-color:#fff;color:black;}
 .span12{width:940px}
-
 h2 div.genericon {font-size:48px;padding-right:20px;}
-
-.genericon {
-width: 32px;
-height: 32px;
-font-size: 32px;
-}
+.genericon {width: 32px;height: 32px;font-size: 32px;}
 
 /* For the Examples */
 .my-checklist {list-style-type: none;text-indent: -16px}
@@ -30,14 +15,7 @@ font-size: 32px;
 .my-button:hover,
 .my-button:focus {background: #ed6a31;background: -webkit-linear-gradient(top, #ed6a31 0%, #e55627 100%); background: -moz-linear-gradient(   top, #ed6a31 0%, #e55627 100%); /* FF3.6+ */background: -ms-linear-gradient(    top, #ed6a31 0%, #e55627 100%); background: -o-linear-gradient(     top, #ed6a31 0%, #e55627 100%); background: linear-gradient(  to bottom, #ed6a31 0%, #e55627 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed6a31', endColorstr='#e55627', GradientType=0);outline: none}
 .my-button:active {background: #d94412;background: -webkit-linear-gradient(top, #d94412 0%, #e05d22 100%); background: -moz-linear-gradient(top, #d94412 0%, #e05d22 100%); background: -ms-linear-gradient(top, #d94412 0%, #e05d22 100%); background: -o-linear-gradient(top, #d94412 0%, #e05d22 100%);background: linear-gradient(to bottom, #d94412 0%, #e05d22 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d94412', endColorstr='#e05d22', GradientType=0); border: none;border-top: 3px solid #b93207;padding: 6px 16px 7px 16px}
-
-.code {
-display: block;
-font: 14px/1.5 monospace;
-width: 740px;
-white-space: pre;
-border: 1px solid #CCC;
-padding: 10px;
-color: #777;
-overflow: auto;
-}
+#iconlist .new, #iconlist .update {position: relative;}
+#iconlist .new:after, #iconlist .update:after {color: #EA834D;display: block;content: "NEW";font: bold 8px/1 sans-serif;position: absolute;top: -8px;left: 6px;z-index: 10;}
+#iconlist .update:after {content: "UPDATED";left: -1px;}
+.code {display: block;font: 14px/1.5 monospace;width: 740px;white-space: pre;border: 1px solid #CCC;padding: 10px;color: #777;overflow: auto;}

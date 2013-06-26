@@ -62,6 +62,7 @@
 .genericon-youtube:before { content: '\f213'; }
 .genericon-tumblr:before { content: '\f214'; }
 .genericon-instagram:before { content: '\f215'; }
+.genericon-codepen:before { content: '\f216'; }
 
 /* Meta icons */
 .genericon-comment:before { content: '\f300'; }
@@ -120,6 +121,16 @@
 .genericon-external:before { content: '\f442'; }
 .genericon-document:before { content: '\f443'; }
 .genericon-book:before { content: '\f444'; }
+.genericon-cog:before { content: '\f445'; }
+.genericon-unapprove:before { content: '\f446'; }
+.genericon-cart:before { content: '\f447'; }
+.genericon-pause:before { content: '\f448'; }
+.genericon-stop:before { content: '\f449'; }
+.genericon-skip-back:before { content: '\f450'; }
+.genericon-skip-ahead:before { content: '\f451'; }
+.genericon-play:before { content: '\f452'; }
+.genericon-tablet:before { content: '\f453'; }
+.genericon-send-to-tablet:before { content: '\f454'; }
 
 /* Generic shapes */
 .genericon-uparrow:before { content: '\f500'; }

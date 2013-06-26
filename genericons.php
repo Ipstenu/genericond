@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 2.1
+Version: 2.0.9
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -50,11 +50,6 @@ class GenericonsHELF {
         add_filter( 'widget_text', 'do_shortcode' );
         add_action( 'admin_menu', array( $this, 'add_settings_page'));
         add_filter('plugin_row_meta', array( $this, 'donate_link'), 10, 2);
-        add_filter('wp_nav_menu', array( $this, 'shortcode_in_menu'));
-    }
-
-    public function shortcode_in_menu() {
-    	return do_shortcode( $menu );
     }
 
     public function register_plugin_styles() {
@@ -110,7 +105,7 @@ class GenericonsHELF {
 
 
  	function settings_page() {
-		?>		<div class="wrap">
+		?>		<div class="wrap" id="iconlist">
         <h2><div class="genericon genericon-wordpress"></div>Genericon'd Settings</h2>
         
         <p>There are no settings for Genericon'd. This page is for documentation only. <a href="http://genericons.com">Genericons</a> are vector icons embedded in a webfont designed to be clean and simple keeping with a generic aesthetic. You can use genericons for instant HiDPI, to change icon colors on the fly, or even with CSS effects such as drop-shadows or gradients. They are provided here as a quick way to include them on your site, regardless of theme.</p>
@@ -158,10 +153,10 @@ class GenericonsHELF {
                     <li><div alt="f200" class="genericon genericon-github"></div> github</li>
                     <li><div alt="f201" class="genericon genericon-dribbble"></div> dribble</li>
                     <li><div alt="f202" class="genericon genericon-twitter"></div> twitter</li>
-                    <li><div alt="f203" class="genericon genericon-facebook"></div> facebook</li>
+                    <li><span class="update"><div alt="f203" class="genericon genericon-facebook"></div> facebook</span></li>
                     <li><div alt="f204" class="genericon genericon-facebook-alt"></div> facebook-alt</li>
                     <li><div alt="f205" class="genericon genericon-wordpress"></div> wordpress</li>
-                    <li><div alt="f206" class="genericon genericon-googleplus"></div> googleplus</li>
+                    <li><span class="update"><div alt="f206" class="genericon genericon-googleplus"></div> googleplus</span></li>
                     <li><div alt="f207" class="genericon genericon-linkedin"></div> linkedin</li>
                     <li><div alt="f208" class="genericon genericon-linkedin-alt"></div> linkedin-alt</li>
                     <li><div alt="f209" class="genericon genericon-pinterest"></div> pinterest</li>
@@ -170,7 +165,8 @@ class GenericonsHELF {
                     <li><div alt="f212" class="genericon genericon-vimeo"></div> vimeo</li>
                     <li><div alt="f213" class="genericon genericon-youtube"></div> youtube</li>
                     <li><div alt="f214" class="genericon genericon-tumblr"></div> tumblr</li>
-                    <li><div alt="f215" class="genericon genericon-instagram"></div> instagram</li>
+                    <li><span class="update"><div alt="f215" class="genericon genericon-instagram"></div> instagram</span></li>
+                    <li><span class="new"><div alt="f216" class="genericon genericon-codepen"></div> codepen</span></li>
                 </ul>   
             </td>
             </tr>
@@ -247,6 +243,16 @@ class GenericonsHELF {
                     <li><div alt="f442" class="genericon genericon-external"></div> external</li>
                     <li><div alt="f443" class="genericon genericon-document"></div> document</li>
                     <li><div alt="f444" class="genericon genericon-book"></div> book</li>
+                    <li><span class="new"><div alt="f445" class="genericon genericon-cog"></div> cog</span></li>
+                    <li><span class="new"><div alt="f446" class="genericon genericon-unapprove"></div> unapprove</span></li>
+                    <li><span class="new"><div alt="f447" class="genericon genericon-cart"></div> cart</span></li>
+                    <li><span class="new"><div alt="f448" class="genericon genericon-pause"></div> pause</span></li>
+                    <li><span class="new"><div alt="f449" class="genericon genericon-stop"></div> stop</span></li>
+                    <li><span class="new"><div alt="f450" class="genericon genericon-skip-back"></div> skip-back</span></li>
+                    <li><span class="new"><div alt="f451" class="genericon genericon-skip-ahead"></div> skip-ahead</span></li>
+                    <li><span class="new"><div alt="f452" class="genericon genericon-play"></div> play</span></li>
+                    <li><span class="new"><div alt="f453" class="genericon genericon-tablet"></div> tablet</span></li>
+                    <li><span class="new"><div alt="f454" class="genericon genericon-send-to-tablet"></div> send-to-tablet</span></li>  
                 </ul>   
             </td>
             </tr>
