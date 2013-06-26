@@ -65,7 +65,7 @@ You mean like this: `[genericon icon=star repeat=4]`
 
 = How about changing the hover-color? =
 
-While I certainly could write that in, I decided not to. You certainly can do this with CSS, however I feel you should only be changing color when there's an action, like hovering over a link, and generally you've already done that. But if you want to manually do it in your CSS, it would go like this: `.genericon-twitter:hover {background-color:pink;color:purple;}`
+While I certainly could write that in, I decided not to. You totally can do this with CSS, however I feel you should only be changing color when there's an action, like hovering over a link, and generally you've already done that. But if you want to manually do it in your CSS, it would go like this: `.genericon-twitter:hover {background-color:pink;color:purple;}`
 
 = Why don't these work on IE 7? =
 
