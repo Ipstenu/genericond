@@ -101,7 +101,7 @@ class GenericonsHELF {
         // Build the Genericon!
         $genericon_styles = $genericon_color; // In case I add more later? Hope I never have to, but...
 
-        $genericon_code = '<i style="'.$genericon_styles.'" class="genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.' '.$genericon_rotate.'"></i>';
+        $genericon_code = '<i style="'.$genericon_styles.'" class="genericond genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.' '.$genericon_rotate.'"></i>';
         $genericon = $genericon_code;
         
         // Repeat the genericon
@@ -134,7 +134,7 @@ class GenericonsHELF {
 
         <h3>Usage Example</h3>
 
-        <p><i alt="f202" class="genericon genericon-twitter"></i> is made by either <code>&#091;genericon icon=twitter&#093;</code> or <code>&lt;i alt="f202" class="genericon genericon-twitter"&gt;&lt;/i&gt;</code> - You can also use <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> tags.</p>
+        <p><i alt="f202" class="genericon genericon-twitter"></i> is made by either <code>&#091;genericon icon=twitter&#093;</code> or <code>&lt;i alt="f202" class="genericond genericon genericon-twitter"&gt;&lt;/i&gt;</code> - You can also use <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> tags.</p>
         
         <p>On the fly color changing means you can make a Twitter Blue icon: <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
         

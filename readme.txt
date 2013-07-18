@@ -13,13 +13,13 @@ Enables easy use of the Genericons icon font set from within WordPress.  Icons c
 
 Genericons are vector icons embedded in a webfont designed to be clean and simple keeping with a generic aesthetic.
 
-A full list of the Genericons icons is available: [http://genericons.com/](http://genericons.com/)
+A full list of the Genericons icons is available at [http://genericons.com/](http://genericons.com/) but also on the WP Admin -> Apperance -> Genericon'd page.
 
 To use any of the Genericons icons on your WordPress site you can use basic HTML (for inserting in themes and functions) or shortcodes (for use in posts or widgets). You can adjust the size of the icons via css or, when using the shortcode, the size attribute. Default size is 16px.
 
 To display the Twitter icon:
 
-HTML: `<div class="genericon genericon-twitter"></div>` or `<i class="genericon genericon-twitter"></i>`
+HTML: `<div class="genericond genericon genericon-twitter"></div>` or `<i class="genericond genericon genericon-twitter"></i>`
 
 Shortcode: `[genericon icon=twitter]`
 
@@ -42,6 +42,14 @@ If you're like me, you forget this alllll the time. On your WP dashboard, go to 
 = Can I add it to menus? =
 
 Yes! If you use CSS classes, you can apply a class like this:  `genericon genericon-facebook` You may need to jigger about with css to make the layout perfect.
+
+If you want to put an icon AND text, you 
+
+= When I exported and imported my content, the menu code didn't come with. What up? =
+
+There's an alternate way to add in menu code: `<i class="genericond genericon genericon-facebook"></i>`
+
+And apparently it doesn't export/import right. I don't know why. I'm working on it, and a way to put shortcodes in menus, but patches are welcome.
 
 = How do I change colors? =
 

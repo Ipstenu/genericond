@@ -6,6 +6,9 @@
 
 */
 
+/* Changes I only want to make to Genericon'd genericons, and not anything in a theme... */
+.genericond {display: inline;vertical-align: middle;}
+
 /* Alternative sizes */
 .genericon::before { font: inherit; } /* We have to do this because Twenty Thirteen doesn't share well */
 .genericon-1x { font: normal 16px/1 Genericons;}
