@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.0.9
+Stable tag: 2.0.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,10 @@ You can use 2x through 6x. Anything else punts it to 1x.
 
 You mean like this: `[genericon icon=star repeat=4]`
 
+= Can I flip an icon? =
+
+Sure! `[genericon icon=twitter rotate={90|180|270|flip-horizontal|flip-vertical} ]`
+
 = How about changing the hover-color? =
 
 While I certainly could write that in, I decided not to. You totally can do this with CSS, however I feel you should only be changing color when there's an action, like hovering over a link, and generally you've already done that. But if you want to manually do it in your CSS, it would go like this: `.genericon-twitter:hover {background-color:pink;color:purple;}`
@@ -85,6 +89,15 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 2.0.9.1 =
+* 2013-07-18
+* Fixed bug with resizing when other themes call in Genericons
+* Change manual nested if into an `in_array()` instead (smarter!)
+* Corrected CSS to match official files 100%
+* Renamed `/lib/` to `/genericons/` (for easier updates)
+* Moved Genericon'd CSS to it's own file and folder (for easier updates)
+* Added in rotate (Credit: <a href="http://fortawesome.github.io/Font-Awesome/examples/#rotated-flipped">Font-Awesome</a>)
 
 = 2.0.9 =
 * 2013-06-26
