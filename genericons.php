@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 2.0.9.1
+Version: 2.0.9.2
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -55,9 +55,9 @@ class GenericonsHELF {
 
     public function register_plugin_styles() {
         global $wp_styles;
-        if ( !wp_script_is('genericons', 'queue') ) {
-            wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css?ver2.0.9.1', __FILE__  ) );
-        }
+        //if ( !wp_script_is('genericons', 'queue') ) {
+            wp_enqueue_style( 'genericond-genericons', plugins_url( 'genericons/genericons.css?ver2.0.9.1', __FILE__  ) );
+        //}
         wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css?ver2.0.9.1', __FILE__  ) );
     }
 
@@ -441,7 +441,7 @@ class GenericonsHELF {
             
             	<p>Preprocessing extensions such as Sass (SCSS Syntax) or LESS</a> can make it easier to manage CSS for a lot of things at once using things like variables and mix-ins.</p>
             
-            	<p>This example will setup the basic genericon rules and sets a color you can use for all icons using Sass:</p>
+            	<p>This example will setup the basic Genericon rules and sets a color you can use for all icons using Sass:</p>
             
             <p><textarea class="code" style="min-height: 360px;" onclick="select();">$icon-color: "#fa8072";
             
@@ -485,7 +485,7 @@ class GenericonsHELF {
             
             	<p>Genericons <strong>does not come with fallback icons by default</strong> -- therefore you have to create them yourself. If you are using HTML similar to this example:
             
-            	<p><code>&lt;span class="genericon genericon-warning"&gt;&lt;/span&gt;</code></p>
+            	<p><code>&lt;span class="genericond genericon genericon-warning"&gt;&lt;/span&gt;</code></p>
             
             	<p>You can use the asterisk hack to serve a different icon to IE7 once you have saved the fallback icons to your project:</p>
             

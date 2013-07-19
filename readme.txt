@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.0.9.1
+Stable tag: 2.0.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,10 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 
 == Changelog ==
 
+= 2.0.9.2 =
+* 2013-07-19
+* Corrected conflict with Jetpack
+
 = 2.0.9.1 =
 * 2013-07-18
 * Fixed bug with resizing when other themes call in Genericons
@@ -139,3 +143,7 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 = 1.0 =
 * 2013-02-27
 * Initial release
+
+== Upgrade Notice ==
+
+New class of "genericond" added to allow for more precise styling in a way that doesn't blow up themes.
