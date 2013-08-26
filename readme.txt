@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.0.9.2
+Stable tag: 2.0.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,8 @@ Shortcode: `[genericon icon=twitter]`
 
 Install as a normal WordPress Plugin
 
+= Usage =
+
 Add shortcode or HTML to your posts, pages and even widgets to display a Genericons icon.
 
 == Frequently Asked Questions ==
@@ -34,6 +36,10 @@ Add shortcode or HTML to your posts, pages and even widgets to display a Generic
 = Aren't they called Genericons with an S? =
 
 Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have been genericonified!' I was in a The Guild frame of mind. Also since this is not the official plugin, I didn't want to use that slug.
+
+= Are there any known conflicts? =
+
+* Jetpack 2.3.1 and older had a css conflict. This has been resolved in Jetpack 2.3.2, so please upgrade.
 
 = What are all the codes to use? =
 
@@ -43,13 +49,11 @@ If you're like me, you forget this alllll the time. On your WP dashboard, go to 
 
 Yes! If you use CSS classes, you can apply a class like this:  `genericon genericon-facebook` You may need to jigger about with css to make the layout perfect.
 
-If you want to put an icon AND text, you 
+If you want to put an icon AND text, you have two options. One is to use pure CSS ala <a href="http://justintadlock.com/archives/2013/08/14/social-nav-menus-part-2">Justin Tadlock's implimentation</a>, and the other is to just add in the menu text like this: `<i class="genericond genericon genericon-facebook"></i>`
 
 = When I exported and imported my content, the menu code didn't come with. What up? =
 
-There's an alternate way to add in menu code: `<i class="genericond genericon genericon-facebook"></i>`
-
-And apparently it doesn't export/import right. I don't know why. I'm working on it, and a way to put shortcodes in menus, but patches are welcome.
+Yeah, Apparently it doesn't export/import right. I don't know why. I'm working on it, and a way to put shortcodes in menus, but patches are welcome.
 
 = How do I change colors? =
 
@@ -81,7 +85,7 @@ While I certainly could write that in, I decided not to. You totally can do this
 
 = Why don't these work on IE 7? =
 
-Genericons itself <strong>does not come with fallback icons by default</strong> -- therefore you have to create them yourself. If you are using HTML similar to this example: <code>&lt;span class="genericon genericon-warning"&gt;&lt;/span&gt;</code>
+Genericons itself <strong>does not come with fallback icons by default</strong> -- therefore you have to create them yourself. You can use HTML similar to this example: <code>&lt;span class="genericon genericon-warning"&gt;&lt;/span&gt;</code>
 
 You can use the asterisk hack to serve a different icon to IE7 once you have saved the fallback icons to your project:
 
@@ -98,9 +102,15 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 
 == Changelog ==
 
+= 2.0.9.3 =
+* 2013-08-26
+* Jetpack fixed their conflict (no change here)
+* Typo in Genericons example page
+* Minor CSS conflict with MP6 (affected menus)
+
 = 2.0.9.2 =
 * 2013-07-19
-* Corrected conflict with Jetpack
+* Rolled back change to correct conflict with Jetpack
 
 = 2.0.9.1 =
 * 2013-07-18
@@ -145,5 +155,3 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 * Initial release
 
 == Upgrade Notice ==
-
-New class of "genericond" added to allow for more precise styling in a way that doesn't blow up themes.

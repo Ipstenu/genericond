@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 2.0.9.2
+Version: 2.0.9.3
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -55,16 +55,19 @@ class GenericonsHELF {
 
     public function register_plugin_styles() {
         global $wp_styles;
-        //if ( !wp_script_is('genericons', 'queue') ) {
-            wp_enqueue_style( 'genericond-genericons', plugins_url( 'genericons/genericons.css?ver2.0.9.1', __FILE__  ) );
-        //}
-        wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css?ver2.0.9.1', __FILE__  ) );
+        wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css', __FILE__ , '', '2.0.9.3'  ) );
+        wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', '2.0.9.3' ) );
     }
 
     function register_admin_styles() {
-    	wp_enqueue_style( 'genericond-example-styles', plugins_url( 'css/example.css?ver2.0.9.1', __FILE__  ) );
-     }
+    	wp_register_style( 'genericondExampleStyles', plugins_url( 'css/example.css', __FILE__ , '', '2.0.9.3' ) );
+    }
 
+    function add_admin_styles() {
+         wp_enqueue_style( 'genericondExampleStyles' );
+    }
+
+    // The Shortcode
     public function setup_shortcode( $params ) {
         $genericonatts = shortcode_atts( array(
                     'icon'   => '',
@@ -112,20 +115,13 @@ class GenericonsHELF {
         return $genericon;
     }
 
-    // donate link on manage plugin page
-    public function donate_link($links, $file) {
-        if ($file == plugin_basename(__FILE__)) {
-                $donate_link = '<a href="https://www.wepay.com/donations/halfelf-wp">Donate</a>';
-                $links[] = $donate_link;
-        }
-        return $links;
-    }
-
-     // Sets up the settings page
+    // Sets up the settings page
 	public function add_settings_page() {
-        $genericonspage = add_theme_page(__('Genericon\'d'), __('Genericon\'d'), 'edit_posts', 'genericons', array($this, 'settings_page'));
+        $page = add_theme_page(__('Genericon\'d'), __('Genericon\'d'), 'edit_posts', 'genericons', array($this, 'settings_page'));
+        add_action( 'admin_print_styles-' . $page, array( $this, 'add_admin_styles') );
     	}
 
+    // Content of the settings page
  	function settings_page() {
 		?>		<div class="wrap" id="iconlist">
         <h2><i class="genericon genericon-wordpress"></i>Genericon'd Settings</h2>
@@ -499,6 +495,15 @@ class GenericonsHELF {
         </div>
         <?php
 	}
+
+    // donate link on manage plugin page
+    public function donate_link($links, $file) {
+        if ($file == plugin_basename(__FILE__)) {
+                $donate_link = '<a href="https://www.wepay.com/donations/halfelf-wp">Donate</a>';
+                $links[] = $donate_link;
+        }
+        return $links;
+    }
 
 }
 
