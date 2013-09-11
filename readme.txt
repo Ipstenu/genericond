@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.0.9.3
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,11 +39,12 @@ Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have be
 
 = Are there any known conflicts? =
 
-* Jetpack 2.3.1 and older had a css conflict. This has been resolved in Jetpack 2.3.2, so please upgrade.
+* Jetpack 2.3.1 and older had a CSS conflict. This has been resolved in Jetpack 2.3.2, so please upgrade.
+* Slim Jetpack has the same issue as Jetpack, however they have not yet (to my knowledge) corrected the CSS conflict
 
 = What are all the codes to use? =
 
-If you're like me, you forget this alllll the time. On your WP dashboard, go to Apperance -> Genericon'd. The page there will show you everything you need to know about using Genericons.
+If you're like me, you forget this alllll the time. On your WP dashboard, go to Apperance -> Genericon'd. The page there will show you everything you need to know about using Genericons, complete with clicky-copy-pasta links.
 
 = Can I add it to menus? =
 
@@ -101,6 +102,13 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 3.0.0 =
+* 2013-09-11
+* Update of iconset (see <a href="http://genericons.com/2013/09/11/3-0/">Genericons 3.0 Release Notes</a> for details)
+* Reformating the admin page to match the official site (plus look cooler)
+* Adding in 'copy' features like http://genericons.com/ has
+* Moving 'examples' off the page into it's own page (for my sanity)
 
 = 2.0.9.3 =
 * 2013-08-26
