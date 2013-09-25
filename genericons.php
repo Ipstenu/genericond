@@ -55,7 +55,11 @@ class GenericonsHELF {
 
     public function register_plugin_styles() {
         global $wp_styles;
-        wp_enqueue_style( 'genericonds', plugins_url( 'genericons/genericons.css', __FILE__ , '', '3.0.1'  ) );
+        if ( wp_style_is('genericons', 'registered') == TRUE) {
+            wp_dequeue_style( 'genericons' );
+            wp_deregister_style('genericons');
+        }
+        wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css', __FILE__ , '', '3.0.1'  ) );
         wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', '3.0.1' ) );
     }
 

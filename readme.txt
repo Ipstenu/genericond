@@ -106,6 +106,7 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 = 3.0.1 =
 * 2013-09-27
 * Update of iconset (see <a href="http://genericons.com/2013/09/25/3-0-1/">Genericons 3.0.1 Release Notes</a> for details)
+* Forcing remove of other genericons if mine is found. It's not nice, but I update (generally) faster than Jetpack.
 
 = 3.0.0 =
 * 2013-09-11
