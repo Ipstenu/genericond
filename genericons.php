@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 3.0
+Version: 3.0.1
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -55,13 +55,13 @@ class GenericonsHELF {
 
     public function register_plugin_styles() {
         global $wp_styles;
-        wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css', __FILE__ , '', '3.0.0'  ) );
-        wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', '3.0.0' ) );
+        wp_enqueue_style( 'genericonds', plugins_url( 'genericons/genericons.css', __FILE__ , '', '3.0.1'  ) );
+        wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', '3.0.1' ) );
     }
 
     function register_admin_styles() {
-    	wp_register_style( 'genericondExampleStyles', plugins_url( 'css/example.css', __FILE__ , '', '3.0.0' ) );
-    	wp_register_script( 'genericondExampleJS', plugins_url( 'js/example.js', __FILE__ , array( 'jquery' ), '3.0.0' ) );
+    	wp_register_style( 'genericondExampleStyles', plugins_url( 'css/example.css', __FILE__ , '', '3.0.1' ) );
+    	wp_register_script( 'genericondExampleJS', plugins_url( 'js/example.js', __FILE__ , array( 'jquery' ), '3.0.1' ) );
     }
 
     function add_admin_styles() {
@@ -128,7 +128,7 @@ class GenericonsHELF {
 		?>
 		<div class="wrap">
 
-        <h2>Genericon'd Settings</h2>
+        <h2>Genericon'd 3.0.1 Settings</h2>
         
         <p>There are no settings for Genericon'd. This page is for documentation only. <a href="http://genericons.com">Genericons</a> are vector icons embedded in a webfont designed to be clean and simple keeping with a generic aesthetic. You can use genericons for instant HiDPI, to change icon colors on the fly, or even with CSS effects such as drop-shadows or gradients. They are provided here as a quick way to include them on your site, regardless of theme.</p>
     	<div id="primary">
@@ -156,7 +156,7 @@ class GenericonsHELF {
     		</div>
     	</div>
                        
-        <div id="icons">
+		<div id="icons">
 			<div id="iconlist">
 
 			<!-- post formats -->
@@ -172,7 +172,7 @@ class GenericonsHELF {
 			<div alt="f109" class="genericon genericon-audio"></div>
 
 			<!-- social icons -->
-            <div alt="f200" class="genericon genericon-github"></div>
+			<div alt="f200" class="genericon genericon-github"></div>
 			<div alt="f201" class="genericon genericon-dribbble"></div>
 			<div alt="f202" class="genericon genericon-twitter"></div>
 			<div alt="f203" class="genericon genericon-facebook"></div>
@@ -190,6 +190,8 @@ class GenericonsHELF {
 			<div alt="f215" class="genericon genericon-instagram"></div>
 			<div alt="f216" class="genericon genericon-codepen"></div>
 			<span class="new"><div alt="f217" class="genericon genericon-polldaddy"></div></span>
+			<span class="new"><div alt="f218" class="genericon genericon-googleplus-alt"></div></span>
+			<span class="new"><div alt="f219" class="genericon genericon-path"></div></span>
 
 			<!-- meta icons -->
 			<div alt="f300" class="genericon genericon-comment"></div>
@@ -223,10 +225,10 @@ class GenericonsHELF {
 			<div alt="f417" class="genericon genericon-location"></div>
 			<div alt="f418" class="genericon genericon-checkmark"></div>
 			<div alt="f419" class="genericon genericon-menu"></div>
-			<div alt="f420" class="genericon genericon-top"></div>
+			<span class="new"><div alt="f420" class="genericon genericon-refresh"></div></span>
 			<div alt="f421" class="genericon genericon-minimize"></div>
 			<div alt="f422" class="genericon genericon-maximize"></div>
-            <div alt="f424" class="genericon genericon-spam"></div>
+						<div alt="f424" class="genericon genericon-spam"></div>
 			<div alt="f425" class="genericon genericon-summary"></div>
 			<div alt="f426" class="genericon genericon-cloud"></div>
 			<div alt="f427" class="genericon genericon-key"></div>
