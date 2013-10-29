@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 3.0.1
+Version: 3.0.2
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -55,16 +55,22 @@ class GenericonsHELF {
 
     public function register_plugin_styles() {
         global $wp_styles;
-        if ( wp_style_is('genericons', 'registered') == TRUE) {
-            wp_dequeue_style( 'genericons' );
-            wp_deregister_style('genericons');
+
+        // Always enqueue Genericon'd CSS
+        wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ ) );
+        
+        // If Genericons not already around, enqueue MY css
+        if ( !isset( $wp_styles->registered[ 'genericons' ] ) ) {
+            wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css', __FILE__  ) );
+        } else {
+            $wp_styles->registered[ 'genericons' ]->src = plugins_url( 'genericons/genericons.css', __FILE__ );
+            $wp_styles->registered[ 'genericons' ]->ver = filemtime( plugin_dir_path( __FILE__ ) . 'genericons/genericons.css' );
         }
-        wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css', __FILE__ , '', '3.0.1'  ) );
-        wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', '3.0.1' ) );
+        
     }
 
     function register_admin_styles() {
-    	wp_register_style( 'genericondExampleStyles', plugins_url( 'css/example.css', __FILE__ , '', '3.0.1' ) );
+    	wp_register_style( 'genericondExampleStyles', plugins_url( 'css/example.css', __FILE__ ) );
     	wp_register_script( 'genericondExampleJS', plugins_url( 'js/example.js', __FILE__ , array( 'jquery' ), '3.0.1' ) );
     }
 
@@ -141,20 +147,24 @@ class GenericonsHELF {
     			</div>
     
     			<div class="description">
-                    <p>Genericons can be displayed via one of the following methods:
+    			    <h3>Usage</h3>
+                    <p>Genericon'd is primarily used via the following type of shortcode (using Twitter as an example):
                     <br /><code>&#091;genericon icon=twitter&#093;</code>
-                    <br />
-                    <br /><code>&lt;i alt="f202" class="genericond genericon genericon-twitter"&gt;&lt;/i&gt;</code></p>
                     
-                    <p>You can also use <code>div</code> or <code>span</code> instead of <code>i</code></p>
+                    <p>There are options you can add to the shortcode to adjust size, color, rotation, and repeat the icon. Below are examples of various options.</p>
                     
-                    <p>On the fly color changing means you can make a Twitter Blue icon: <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
+                    <p>Change Color: <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
                     
-                    <p>On the fly resize lets you make a Facebook icon bigger: <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
+                    <p>Resize: <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
             
-                    <p>Want to repeat a Genericon multiple times? Like a star? <code>&#091;genericon icon=star repeat=3&#093;</code></p>
+                    <p>Repeat: <code>&#091;genericon icon=star repeat=3&#093;</code></p>
                     
-                    <p>Want to flip it around? <code>&#091;genericon icon=twitter rotate=flip-horizontal&#093;</code></p>
+                    <p>Rotate: <code>&#091;genericon icon=twitter rotate=flip-horizontal&#093;</code></p>
+                    <hr>
+                    <p>When resizing, you can go up to 6x. Fonts start at 16px and increment accordingly.</p>
+                    <p>Repeat can be used as much as you think it should. I've tested it up to 50.</p>
+                    <p>For rotation, you can use any of the following: <code>{90|180|270|flip-horizontal|flip-vertical}</code></p>
+                
     			</div>
     
     		</div>
@@ -293,6 +303,15 @@ class GenericonsHELF {
         }
         return $links;
     }
+
+		// add settings to manage plugin page
+		function add_settings_link( $links, $file ) {
+			if ( plugin_basename( __FILE__ ) == $file ) {
+				$settings_link = '<a href="' . admin_url( 'themes.php?page=genericons' ) . '">' . __( 'Settings' ) . '</a>';
+				array_unshift( $links, $settings_link );
+			}
+			return $links;
+		}
 
 }
 
