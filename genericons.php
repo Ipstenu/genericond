@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 3.0.2
+Version: 3.0.3.1
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -55,23 +55,17 @@ class GenericonsHELF {
 
     public function register_plugin_styles() {
         global $wp_styles;
-
-        // Always enqueue Genericon'd CSS
-        wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ ) );
-        
-        // If Genericons not already around, enqueue MY css
-        if ( !isset( $wp_styles->registered[ 'genericons' ] ) ) {
-            wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css', __FILE__  ) );
-        } else {
-            $wp_styles->registered[ 'genericons' ]->src = plugins_url( 'genericons/genericons.css', __FILE__ );
-            $wp_styles->registered[ 'genericons' ]->ver = filemtime( plugin_dir_path( __FILE__ ) . 'genericons/genericons.css' );
+        if ( wp_style_is('genericons', 'registered') == TRUE) {
+            wp_dequeue_style( 'genericons' );
+            wp_deregister_style('genericons');
         }
-        
+        wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css', __FILE__ , '', '3.0.3.1'  ) );
+        wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', '3.0.3.1' ) );
     }
 
     function register_admin_styles() {
-    	wp_register_style( 'genericondExampleStyles', plugins_url( 'css/example.css', __FILE__ ) );
-    	wp_register_script( 'genericondExampleJS', plugins_url( 'js/example.js', __FILE__ , array( 'jquery' ), '3.0.1' ) );
+    	wp_register_style( 'genericondExampleStyles', plugins_url( 'css/example.css', __FILE__ , '', '3.0.3.1' ) );
+    	wp_register_script( 'genericondExampleJS', plugins_url( 'js/example.js', __FILE__ , array( 'jquery' ), '3.0.3.1' ) );
     }
 
     function add_admin_styles() {
@@ -138,7 +132,7 @@ class GenericonsHELF {
 		?>
 		<div class="wrap">
 
-        <h2>Genericon'd 3.0.1 Settings</h2>
+        <h2>Genericon'd 3.0.3.1 Settings</h2>
         
         <p>There are no settings for Genericon'd. This page is for documentation only. <a href="http://genericons.com">Genericons</a> are vector icons embedded in a webfont designed to be clean and simple keeping with a generic aesthetic. You can use genericons for instant HiDPI, to change icon colors on the fly, or even with CSS effects such as drop-shadows or gradients. They are provided here as a quick way to include them on your site, regardless of theme.</p>
     	<div id="primary">
@@ -147,24 +141,20 @@ class GenericonsHELF {
     			</div>
     
     			<div class="description">
-    			    <h3>Usage</h3>
-                    <p>Genericon'd is primarily used via the following type of shortcode (using Twitter as an example):
+                    <p>Genericons can be displayed via one of the following methods:
                     <br /><code>&#091;genericon icon=twitter&#093;</code>
+                    <br />
+                    <br /><code>&lt;i alt="f202" class="genericond genericon genericon-twitter"&gt;&lt;/i&gt;</code></p>
                     
-                    <p>There are options you can add to the shortcode to adjust size, color, rotation, and repeat the icon. Below are examples of various options.</p>
+                    <p>You can also use <code>div</code> or <code>span</code> instead of <code>i</code></p>
                     
-                    <p>Change Color: <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
+                    <p>On the fly color changing means you can make a Twitter Blue icon: <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
                     
-                    <p>Resize: <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
+                    <p>On the fly resize lets you make a Facebook icon bigger: <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
             
-                    <p>Repeat: <code>&#091;genericon icon=star repeat=3&#093;</code></p>
+                    <p>Want to repeat a Genericon multiple times? Like a star? <code>&#091;genericon icon=star repeat=3&#093;</code></p>
                     
-                    <p>Rotate: <code>&#091;genericon icon=twitter rotate=flip-horizontal&#093;</code></p>
-                    <hr>
-                    <p>When resizing, you can go up to 6x. Fonts start at 16px and increment accordingly.</p>
-                    <p>Repeat can be used as much as you think it should. I've tested it up to 50.</p>
-                    <p>For rotation, you can use any of the following: <code>{90|180|270|flip-horizontal|flip-vertical}</code></p>
-                
+                    <p>Want to flip it around? <code>&#091;genericon icon=twitter rotate=flip-horizontal&#093;</code></p>
     			</div>
     
     		</div>
@@ -303,7 +293,6 @@ class GenericonsHELF {
         }
         return $links;
     }
-
 		// add settings to manage plugin page
 		function add_settings_link( $links, $file ) {
 			if ( plugin_basename( __FILE__ ) == $file ) {
