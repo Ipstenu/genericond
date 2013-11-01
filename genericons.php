@@ -21,10 +21,10 @@ License:
     modify it under the terms of the GNU General Public License as published
     by the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-    
-    Genericons itself is free software; you can redistribute it and/or modify 
-    it under the terms of the GNU General Public License as published by the 
-    Free Software Foundation; either version 2 of the License, or (at your option) 
+
+    Genericons itself is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by the
+    Free Software Foundation; either version 2 of the License, or (at your option)
     any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -82,16 +82,16 @@ class GenericonsHELF {
                     'rotate' => '',
                     'repeat' => '1'
                 ), $params );
-        
+
         // Resizing
         $genericon_size = "genericon-";
-        if ( !empty($genericonatts['size']) && isset($genericonatts['size']) && in_array($genericonatts['size'], array('2x', '3x', '4x', '5x', '6x')) ) { 
-            $genericon_size .= $genericonatts['size']; 
+        if ( !empty($genericonatts['size']) && isset($genericonatts['size']) && in_array($genericonatts['size'], array('2x', '3x', '4x', '5x', '6x')) ) {
+            $genericon_size .= $genericonatts['size'];
         }
-        else { 
-            $genericon_size .= "1x"; 
+        else {
+            $genericon_size .= "1x";
         }
-        
+
         // Color
         $genericon_color = "color:";
         if ( isset($genericonatts['color']) && !empty($genericonatts['color']) ) {
@@ -103,16 +103,16 @@ class GenericonsHELF {
         $genericon_color .= ";";
 
         // Rotate
-        if ( !empty($genericonatts['rotate']) && isset($genericonatts['rotate']) && in_array($genericonatts['rotate'], array('90', '180', '270', 'flip-horizontal', 'flip-vertical')) ) { 
-            $genericon_rotate = 'genericon-rotate-'.$genericonatts['rotate']; 
+        if ( !empty($genericonatts['rotate']) && isset($genericonatts['rotate']) && in_array($genericonatts['rotate'], array('90', '180', '270', 'flip-horizontal', 'flip-vertical')) ) {
+            $genericon_rotate = 'genericon-rotate-'.$genericonatts['rotate'];
         }
-         
+
         // Build the Genericon!
         $genericon_styles = $genericon_color; // In case I add more later? Hope I never have to, but...
 
         $genericon_code = '<i style="'.$genericon_styles.'" class="genericond genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.' '.$genericon_rotate.'"></i>';
         $genericon = $genericon_code;
-        
+
         // Repeat the genericon
         for ($i = 2 ; $i <= $genericonatts['repeat']; ++$i) {
 	        $genericon .= $genericon_code;
@@ -133,33 +133,33 @@ class GenericonsHELF {
 		<div class="wrap">
 
         <h2>Genericon'd 3.0.3.1 Settings</h2>
-        
+
         <p>There are no settings for Genericon'd. This page is for documentation only. <a href="http://genericons.com">Genericons</a> are vector icons embedded in a webfont designed to be clean and simple keeping with a generic aesthetic. You can use genericons for instant HiDPI, to change icon colors on the fly, or even with CSS effects such as drop-shadows or gradients. They are provided here as a quick way to include them on your site, regardless of theme.</p>
     	<div id="primary">
     		<div id="content">
     			<div id="glyph">
     			</div>
-    
+
     			<div class="description">
                     <p>Genericons can be displayed via one of the following methods:
                     <br /><code>&#091;genericon icon=twitter&#093;</code>
                     <br />
                     <br /><code>&lt;i alt="f202" class="genericond genericon genericon-twitter"&gt;&lt;/i&gt;</code></p>
-                    
+
                     <p>You can also use <code>div</code> or <code>span</code> instead of <code>i</code></p>
-                    
+
                     <p>On the fly color changing means you can make a Twitter Blue icon: <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
-                    
+
                     <p>On the fly resize lets you make a Facebook icon bigger: <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
-            
+
                     <p>Want to repeat a Genericon multiple times? Like a star? <code>&#091;genericon icon=star repeat=3&#093;</code></p>
-                    
+
                     <p>Want to flip it around? <code>&#091;genericon icon=twitter rotate=flip-horizontal&#093;</code></p>
     			</div>
-    
+
     		</div>
     	</div>
-                       
+
 		<div id="icons">
 			<div id="iconlist">
 
@@ -171,14 +171,14 @@ class GenericonsHELF {
 			<div alt="f104" class="genericon genericon-video"></div>
 			<div alt="f105" class="genericon genericon-status"></div>
 			<div alt="f106" class="genericon genericon-quote"></div>
-			<div alt="f107" class="genericon genericon-link"></div>
+			<span class="update"><div alt="f107" class="genericon genericon-link"></div></span>
 			<div alt="f108" class="genericon genericon-chat"></div>
 			<div alt="f109" class="genericon genericon-audio"></div>
 
 			<!-- social icons -->
 			<div alt="f200" class="genericon genericon-github"></div>
 			<div alt="f201" class="genericon genericon-dribbble"></div>
-			<div alt="f202" class="genericon genericon-twitter"></div>
+			<span class="update"><div alt="f202" class="genericon genericon-twitter"></div></span>
 			<div alt="f203" class="genericon genericon-facebook"></div>
 			<div alt="f204" class="genericon genericon-facebook-alt"></div>
 			<div alt="f205" class="genericon genericon-wordpress"></div>
@@ -193,9 +193,14 @@ class GenericonsHELF {
 			<div alt="f214" class="genericon genericon-tumblr"></div>
 			<div alt="f215" class="genericon genericon-instagram"></div>
 			<div alt="f216" class="genericon genericon-codepen"></div>
-			<span class="new"><div alt="f217" class="genericon genericon-polldaddy"></div></span>
-			<span class="new"><div alt="f218" class="genericon genericon-googleplus-alt"></div></span>
-			<span class="new"><div alt="f219" class="genericon genericon-path"></div></span>
+			<div alt="f217" class="genericon genericon-polldaddy"></div>
+			<div alt="f218" class="genericon genericon-googleplus-alt"></div>
+			<div alt="f219" class="genericon genericon-path"></div>
+			<span class="new"><div alt="f220" class="genericon genericon-skype"></div></span>
+			<span class="new"><div alt="f221" class="genericon genericon-digg"></div></span>
+			<span class="new"><div alt="f222" class="genericon genericon-reddit"></div></span>
+			<span class="new"><div alt="f223" class="genericon genericon-stumbleupon"></div></span>
+			<span class="new"><div alt="f224" class="genericon genericon-pocket"></div></span>
 
 			<!-- meta icons -->
 			<div alt="f300" class="genericon genericon-comment"></div>
@@ -206,7 +211,7 @@ class GenericonsHELF {
 			<div alt="f305" class="genericon genericon-day"></div>
 			<div alt="f306" class="genericon genericon-week"></div>
 			<div alt="f307" class="genericon genericon-month"></div>
-			<div alt="f308" class="genericon genericon-pinned"></div>
+			<span class="update"><div alt="f308" class="genericon genericon-pinned"></div></span>
 
 			<!-- other icons -->
 			<div alt="f400" class="genericon genericon-search"></div>
@@ -218,18 +223,18 @@ class GenericonsHELF {
 			<div alt="f406" class="genericon genericon-close-alt"></div>
 			<div alt="f407" class="genericon genericon-trash"></div>
 			<div alt="f408" class="genericon genericon-star"></div>
-			<div alt="f409" class="genericon genericon-home"></div>
-			<div alt="f410" class="genericon genericon-mail"></div>
+			<span class="update"><div alt="f409" class="genericon genericon-home"></div></span>
+			<span class="update"><div alt="f410" class="genericon genericon-mail"></div></span>
 			<div alt="f411" class="genericon genericon-edit"></div>
 			<div alt="f412" class="genericon genericon-reply"></div>
-			<span class="update"><div alt="f413" class="genericon genericon-feed"></div></span>
+			<div alt="f413" class="genericon genericon-feed"></div>
 			<div alt="f414" class="genericon genericon-warning"></div>
 			<div alt="f415" class="genericon genericon-share"></div>
 			<div alt="f416" class="genericon genericon-attachment"></div>
 			<div alt="f417" class="genericon genericon-location"></div>
 			<div alt="f418" class="genericon genericon-checkmark"></div>
 			<div alt="f419" class="genericon genericon-menu"></div>
-			<span class="new"><div alt="f420" class="genericon genericon-refresh"></div></span>
+			<div alt="f420" class="genericon genericon-refresh"></div>
 			<div alt="f421" class="genericon genericon-minimize"></div>
 			<div alt="f422" class="genericon genericon-maximize"></div>
 						<div alt="f424" class="genericon genericon-spam"></div>
@@ -251,7 +256,7 @@ class GenericonsHELF {
 			<div alt="f440" class="genericon genericon-cloud-download"></div>
 			<div alt="f441" class="genericon genericon-cloud-upload"></div>
 			<div alt="f442" class="genericon genericon-external"></div>
-			<div alt="f443" class="genericon genericon-document"></div>
+			<span class="update"><div alt="f443" class="genericon genericon-document"></div></span>
 			<div alt="f444" class="genericon genericon-book"></div>
 			<div alt="f445" class="genericon genericon-cog"></div>
 			<div alt="f446" class="genericon genericon-unapprove"></div>
@@ -263,12 +268,25 @@ class GenericonsHELF {
 			<div alt="f452" class="genericon genericon-play"></div>
 			<div alt="f453" class="genericon genericon-tablet"></div>
 			<div alt="f454" class="genericon genericon-send-to-tablet"></div>
-			<span class="new"><div alt="f455" class="genericon genericon-info"></div></span>
-			<span class="new"><div alt="f456" class="genericon genericon-notice"></div></span>
-			<span class="new"><div alt="f457" class="genericon genericon-help"></div></span>
-			<span class="new"><div alt="f458" class="genericon genericon-fastforward"></div></span>
-			<span class="new"><div alt="f459" class="genericon genericon-rewind"></div></span>
-			<span class="new"><div alt="f460" class="genericon genericon-portfolio"></div></span>
+			<div alt="f455" class="genericon genericon-info"></div>
+			<div alt="f456" class="genericon genericon-notice"></div>
+			<div alt="f457" class="genericon genericon-help"></div>
+			<div alt="f458" class="genericon genericon-fastforward"></div>
+			<div alt="f459" class="genericon genericon-rewind"></div>
+			<div alt="f460" class="genericon genericon-portfolio"></div>
+			<span class="new"><div alt="f461" class="genericon genericon-heart"></div></span>
+			<span class="new"><div alt="f462" class="genericon genericon-code"></div></span>
+			<span class="new"><div alt="f463" class="genericon genericon-subscribe"></div></span>
+			<span class="new"><div alt="f464" class="genericon genericon-unsubscribe"></div></span>
+			<span class="new"><div alt="f465" class="genericon genericon-subscribed"></div></span>
+			<span class="new"><div alt="f466" class="genericon genericon-reply-alt"></div></span>
+			<span class="new"><div alt="f467" class="genericon genericon-reply-single"></div></span>
+			<span class="new"><div alt="f468" class="genericon genericon-flag"></div></span>
+			<span class="new"><div alt="f469" class="genericon genericon-print"></div></span>
+			<span class="new"><div alt="f470" class="genericon genericon-lock"></div></span>
+			<span class="new"><div alt="f471" class="genericon genericon-bold"></div></span>
+			<span class="new"><div alt="f472" class="genericon genericon-italic"></div></span>
+			<span class="new"><div alt="f473" class="genericon genericon-picture"></div></span>
 
 			<!-- generic shapes -->
 			<div alt="f500" class="genericon genericon-uparrow"></div>
@@ -278,7 +296,8 @@ class GenericonsHELF {
 
 			</div>
 		</div>
-		
+		<div id="temp"></div>
+
         <p>Need more examples? Check out <a href="<?php echo plugins_url( 'genericons/example.html', __FILE__); ?>">the official Genericons Examples</a></p>
 
         </div>
