@@ -311,7 +311,7 @@ class GenericonsHELF {
     // donate link on manage plugin page
     public function donate_link($links, $file) {
         if ($file == plugin_basename(__FILE__)) {
-                $donate_link = '<a href="https://www.wepay.com/donations/halfelf-wp">Donate</a>';
+                $donate_link = '<a href="https://store.halfelf.org/donate/">Donate</a>';
                 $links[] = $donate_link;
         }
         return $links;
