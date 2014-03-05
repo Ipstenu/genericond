@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 3.0.3.2
+Version: 3.0.3.3
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -40,7 +40,7 @@ License: MIT
 
 class GenericonsHELF {
 
-    static $gen_ver = '3.0.3.2'; // Plugin version so I can be lazy
+    static $gen_ver = '3.0.3.3'; // Plugin version so I can be lazy
     
     public function __construct() {
         add_action( 'init', array( &$this, 'init' ) );
@@ -108,15 +108,16 @@ class GenericonsHELF {
         // Rotate
         if ( !empty($genericonatts['rotate']) && isset($genericonatts['rotate']) && in_array($genericonatts['rotate'], array('90', '180', '270', 'flip-horizontal', 'flip-vertical')) ) {
             $genericon_rotate = 'genericon-rotate-'.$genericonatts['rotate'];
+        } else {
+            $genericon_rotate = 'genericon-rotate-normal';
         }
 
         // Build the Genericon!
         $genericon_styles = $genericon_color; // In case I add more later? Hope I never have to, but...
-
         $genericon_code = '<i style="'.$genericon_styles.'" class="genericond genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.' '.$genericon_rotate.'"></i>';
         $genericon = $genericon_code;
 
-        // Repeat the genericon
+        // Repeat the genericon if needed
         for ($i = 2 ; $i <= $genericonatts['repeat']; ++$i) {
 	        $genericon .= $genericon_code;
 	    }
