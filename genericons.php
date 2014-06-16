@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 3.0.3.3
+Version: 3.0.3.4
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -40,7 +40,7 @@ License: MIT
 
 class GenericonsHELF {
 
-    static $gen_ver = '3.0.3.3'; // Plugin version so I can be lazy
+    static $gen_ver = '3.0.3.4'; // Plugin version so I can be lazy
     
     public function __construct() {
         add_action( 'init', array( &$this, 'init' ) );
@@ -53,7 +53,7 @@ class GenericonsHELF {
         add_shortcode( 'genericon', array( $this, 'setup_shortcode' ) );
         add_filter( 'widget_text', 'do_shortcode' );
         add_action( 'admin_menu', array( $this, 'add_settings_page'));
-        add_filter('plugin_row_meta', array( $this, 'donate_link'), 10, 2);
+        add_filter('plugin_row_meta', array( $this, 'plugin_links'), 10, 2);
     }
 
     public function register_plugin_styles() {
@@ -310,22 +310,14 @@ class GenericonsHELF {
 	}
 
     // donate link on manage plugin page
-    public function donate_link($links, $file) {
+    public function plugin_links($links, $file) {
         if ($file == plugin_basename(__FILE__)) {
                 $donate_link = '<a href="https://store.halfelf.org/donate/">Donate</a>';
-                $links[] = $donate_link;
+				$settings_link = '<a href="' . admin_url( 'themes.php?page=genericons' ) . '">' . __( 'Settings' ) . '</a>';
+                $links[] = $settings_link.' | '.$donate_link;
         }
         return $links;
     }
-		// add settings to manage plugin page
-		function add_settings_link( $links, $file ) {
-			if ( plugin_basename( __FILE__ ) == $file ) {
-				$settings_link = '<a href="' . admin_url( 'themes.php?page=genericons' ) . '">' . __( 'Settings' ) . '</a>';
-				array_unshift( $links, $settings_link );
-			}
-			return $links;
-		}
-
 }
 
 new GenericonsHELF();

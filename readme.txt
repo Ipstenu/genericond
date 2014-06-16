@@ -2,8 +2,8 @@
 Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 3.0.3.3
+Tested up to: 4.0
+Stable tag: 3.0.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,16 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 3.0.3.4 =
+* 2014-06-16
+* Adding better link to settings
+* Updating function names
+* Minor Cleanup
+
+= 3.0.3.3 =
+* 2014-03
+* Issue with debugger (<a href="https://wordpress.org/support/topic/debugger-notice">props violacase</a> though I have NO idea why you see the errors and I don't!)
 
 = 3.0.3.2 =
 * 2014-01-10
