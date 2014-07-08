@@ -11,12 +11,12 @@
 
 /* Alternative sizes */
 .genericon::before { font: inherit; } /* We have to do this because Twenty Thirteen doesn't share well */
-.genericon-1x { font: normal 16px/1 Genericons;}
-.genericon-2x { font: normal 32px/1 Genericons;}
-.genericon-3x { font: normal 48px/1 Genericons;}
-.genericon-4x { font: normal 64px/1 Genericons;}
-.genericon-5x { font: normal 80px/1 Genericons;}
-.genericon-6x { font: normal 96px/1 Genericons;}
+.genericon-1x { font: normal 100%/1 Genericons;}
+.genericon-2x { font: normal 200%/1 Genericons;}
+.genericon-3x { font: normal 300%/1 Genericons;}
+.genericon-4x { font: normal 400%/1 Genericons;}
+.genericon-5x { font: normal 500%/1 Genericons;}
+.genericon-6x { font: normal 600%/1 Genericons;}
 
 /* Icon rotations and mirroring : Via Font-Awesome */
 .genericon-rotate-90:before {
