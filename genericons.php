@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 3.1.2
+Version: 3.1.3
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -40,7 +40,7 @@ License: MIT
 
 class GenericonsHELF {
 
-    static $gen_ver = '3.1.2'; // Plugin version so I can be lazy
+    static $gen_ver = '3.1.3'; // Plugin version so I can be lazy
     
     public function __construct() {
         add_action( 'init', array( &$this, 'init' ) );
@@ -62,7 +62,7 @@ class GenericonsHELF {
             wp_dequeue_style( 'genericons' ); // This is to force other plugins and themes with older versions to STFUNOOB
             wp_deregister_style('genericons');
         }
-        wp_enqueue_style( 'genericons', plugins_url( 'genericons/font/genericons.css', __FILE__ , '', self::$gen_ver ) );
+        wp_enqueue_style( 'genericons', plugins_url( 'genericons/genericons.css', __FILE__ , '', self::$gen_ver ) );
         wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', self::$gen_ver ) );
     }
 
