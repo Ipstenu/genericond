@@ -117,6 +117,11 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 * 2014-10-03
 * <a href="http://genericons.com/2014/10/03/3-2/">Major 3.2 release to Genericons</a>
 
+= 3.1.3 = 
+* 2014-08-07
+* Typo :(
+
+
 = 3.1.2 = 
 * 2014-08-06
 * Updating example page
