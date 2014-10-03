@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 3.1.3
+Stable tag: 3.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,13 +25,23 @@ Shortcode: `[genericon icon=twitter]`
 
 == Installation ==
 
-Install as a normal WordPress Plugin
+Install as a normal WordPress Plugin.
 
 = Usage =
 
 Add shortcode or HTML to your posts, pages and even widgets to display a Genericons icon.
 
+Example - To display the Twitter icon:
+
+HTML: `<div class="genericond genericon genericon-twitter"></div>` or `<i class="genericond genericon genericon-twitter"></i>`
+
+Shortcode: `[genericon icon=twitter]`
+
 == Frequently Asked Questions ==
+
+= I have an idea for an icon! =
+
+Great! I'm a monkey with a crayon! Seriously, though, I didn't make Genericons, I have no artistic ability to make more. If I did, we'd have a unicorn one. Please file issues and requests for new icons <a href="https://github.com/Automattic/Genericons/issues">directly with Genericons</a>.
 
 = Aren't they called Genericons with an S? =
 
@@ -102,6 +112,10 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 3.2.0 =
+* 2014-10-03
+* <a href="http://genericons.com/2014/10/03/3-2/">Major 3.2 release to Genericons</a>
 
 = 3.1.2 = 
 * 2014-08-06
