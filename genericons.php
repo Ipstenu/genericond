@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 3.2.0
+Version: 3.3.0
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org

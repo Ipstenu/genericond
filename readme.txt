@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 3.2.0
+Stable tag: 3.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,10 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 3.3.0 =
+* 2014-10-31
+* <a href="http://genericons.com/2014/10/30/3-3-the-source-release/">Major 3.3 release to Genericons</a>
 
 = 3.2.0 =
 * 2014-10-03
@@ -231,4 +235,4 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 * Initial release
 
 == Upgrade Notice ==
-Many icons were visually updated. Please be mindful if you choose to upgrade and check that the updated icons behave as you intended. See: <a href="http://genericons.com/2014/01/10/3-0-3/">Genericons 3.0.3 Release Notes</a>
+There is no change to the functionality of the plugin, nor have icons been added. This is for parity with the base code version.
