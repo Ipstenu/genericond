@@ -124,7 +124,7 @@ class GenericonsHELF {
 
         // Build the Genericon!
         $genericon_styles = $genericon_color; // In case I add more later? Hope I never have to, but...
-        $genericon_code = '<i title="'..'" style="'.$genericon_styles.'" class="genericond genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.' '.$genericon_rotate.'"></i>';
+        $genericon_code = '<i title="'.$genericon_title.'" style="'.$genericon_styles.'" class="genericond genericon genericon-'.$genericonatts['icon'].' '.$genericon_size.' '.$genericon_rotate.'"></i>';
         $genericon = $genericon_code;
 
         // Repeat the genericon if needed
