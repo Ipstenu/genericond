@@ -7,7 +7,7 @@
 */
 
 /* Changes I only want to make to Genericon'd genericons, and not anything in a theme... */
-.genericond {display: inline;vertical-align: middle;}
+.genericond {display: inline-block;vertical-align: middle;}
 
 /* Alternative sizes */
 .genericon::before { font: inherit; } /* We have to do this because Twenty Thirteen doesn't share well */
@@ -17,43 +17,3 @@
 .genericon-4x { font: normal 400%/1 Genericons;}
 .genericon-5x { font: normal 500%/1 Genericons;}
 .genericon-6x { font: normal 600%/1 Genericons;}
-
-/* Icon rotations and mirroring : Via Font-Awesome */
-.genericon-rotate-90:before {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-}
-.genericon-rotate-180:before {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-}
-.genericon-rotate-270:before {
-  -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
-  transform: rotate(270deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
-.genericon-rotate-flip-horizontal:before {
-  -webkit-transform: scale(-1, 1);
-  -moz-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  transform: scale(-1, 1);
-}
-.genericon-rotate-flip-vertical:before {
-  -webkit-transform: scale(1, -1);
-  -moz-transform: scale(1, -1);
-  -ms-transform: scale(1, -1);
-  -o-transform: scale(1, -1);
-  transform: scale(1, -1);
-}
