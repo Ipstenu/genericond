@@ -2,8 +2,8 @@
 Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.9
-Tested up to: 4.3
-Stable tag: 3.4.0
+Tested up to: 4.4
+Stable tag: 3.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,10 +113,14 @@ You can use the asterisk hack to serve a different icon to IE7 once you have sav
 
 == Changelog ==
 
+= 3.4.1 =
+* 2015-11-12
+* IE8 support restored. 
+
 = 3.4.0 = 
 * 2015-09-18
 * <a href="http://genericons.com/2015/09/18/3-4/">Major 3.4 release to Genericons</a>
-* Move path to  CSS file per change in Genericons
+* Move path to CSS file per change in Genericons
 * Remove my rotation code as it's now included in core Genericons
 * Split rotation and flip code to reflect changes above
 * Fix broken rotations (which apparently was broken ages ago and no one noticed, sorry)

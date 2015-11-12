@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
 Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 3.4.0
+Version: 3.4.1
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
@@ -13,7 +13,7 @@ Credits:
 
 License: MIT
 
-  Copyright (C) 2013 - 2014 Mika Epstein.
+  Copyright (C) 2013 - 2015 Mika Epstein.
 
     This file is part of Genericon'd, a plugin for WordPress.
 
@@ -40,7 +40,7 @@ License: MIT
 
 class GenericonsHELF {
 
-    static $gen_ver = '3.4.0'; // Plugin version so I can be lazy
+    static $gen_ver = '3.4.1'; // Plugin version so I can be lazy
     
     public function __construct() {
         add_action( 'init', array( &$this, 'init' ) );
