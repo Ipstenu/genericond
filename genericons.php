@@ -7,13 +7,12 @@ Version: 3.4.1
 Author: Mika Epstein
 Author URI: http://ipstenu.org/
 Author Email: ipstenu@ipstenu.org
-Credits:
-     Forked plugin code from Rachel Baker's Font Awesome for WordPress plugin
-     https://github.com/rachelbaker/Font-Awesome-WordPress-Plugin
 
-License: MIT
+	Credits: Forked plugin code from Rachel Baker's Font Awesome for WordPress plugin - https://github.com/rachelbaker/Font-Awesome-WordPress-Plugin
 
-  Copyright (C) 2013 - 2015 Mika Epstein.
+	License: MIT
+
+	Copyright (C) 2013 - 2016 Mika Epstein (ipstenu@halfelf.org)
 
     This file is part of Genericon'd, a plugin for WordPress.
 

@@ -1,6 +1,14 @@
+# Genericon'd #
 
-#Genericons for WordPress
+This is the development repository for the Genericon'd plugin.
 
-This is the totally trunk, do not use unless you are uber ballsy, version of Genericons for WordPress. New features show up here first.
+## Documentation
 
-For the live version, go to http://wordpress.org/extend/plugins/genericond/
+* [WP Readme](readme.txt)
+* [Changelog](changelog.txt)
+
+## Links
+
+* [Plugin Site](http://halfelf.org/plugins/genericond/)
+* [Basic Support](http://wordpress.org/support/plugin/genericond/)
+* [Donate](https://store.halfelf.org/donate/)
