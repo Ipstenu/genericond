@@ -54,7 +54,11 @@ On your WP dashboard, go to Appearance -> Genericon'd. The page there will list 
 
 = Can I add it to menus? =
 
-No. You can't add shortcodes to menus at this time. There used to be a workaround with using the `icon` code, but since we're not using Font Icons anymore, you can't anymore.
+No. You can't add shortcodes to menus at this time. There used to be a workaround with using the `icon` code, but since we're not using Font Icons anymore, you can't anymore unless you enable Legacy Font Icons.
+
+= What are Legacy Font Icons? =
+
+If you still want to have the old font-icons available, you can enable them by checking boxes on the settings page. It's not recommended though, as the font will slow your page down.
 
 = How do I change colors? =
 
@@ -78,7 +82,7 @@ You can use 2x through 6x. Anything else punts it to 1x.
 
 = I want to repeat an icon =
 
-You mean like this: `[genericon icon=star repeat=4]`
+You do it like this: `[genericon icon=star repeat=4]`
 
 = Can I flip an icon? =
 
@@ -86,7 +90,7 @@ Sure! `[genericon icon=twitter rotate={90|180|270|flip-horizontal|flip-vertical}
 
 = How about changing the hover-color? =
 
-This is less complicated than it looks. If you want to edit the hover code, it's like this:
+This is less complicated than it looks but requires CSS:
 
 `
 svg.social-logos-twitter:hover {
@@ -105,9 +109,10 @@ If you wanted it to be for links only, then use `a svg.social-logos-twitter:hove
 
 = 4.0.0 =
 
-* 2016-06-08
+* 2016-06
 * Complete refactor
 * Merge of Social Icons
+* Add option for supporting legacy fonts
 
 = 3.4.1 =
 * 2015-11-12
@@ -122,4 +127,4 @@ If you wanted it to be for links only, then use `a svg.social-logos-twitter:hove
 * Fix broken rotations (which apparently was broken ages ago and no one noticed, sorry)
 
 == Upgrade Notice ==
-Version 4.0 and up uses New Genericons which NO LONGER users font icons. Some of your css rules may need to be changed.
+Version 4.0 and up uses New Genericons which NO LONGER uses font icons by default.
