@@ -3,26 +3,26 @@
 */
 
 /* Changes I only want to make to Genericon'd genericons, and not anything in a theme... */
-svg.genericond-genericon {height: 16px; width: 16px;display: inline-block;vertical-align: baseline; margin:4px}
+svg.genericond-genericons {height: 16px; width: 16px;display: inline-block;vertical-align: baseline; margin:4px}
 
 /* Alternative sizes */
-svg.genericond-genericon-1x { height:16px; width:16px;}
-svg.genericond-genericon-2x { height:32px; width:32px;}
-svg.genericond-genericon-3x { height:48px; width:48px;}
-svg.genericond-genericon-4x { height:64px; width:64px;}
-svg.genericond-genericon-5x { height:80px; width:80px;}
-svg.genericond-genericon-6x { height:96px; width:96px;}
+svg.genericond-genericons-1x { height:16px; width:16px;}
+svg.genericond-genericons-2x { height:32px; width:32px;}
+svg.genericond-genericons-3x { height:48px; width:48px;}
+svg.genericond-genericons-4x { height:64px; width:64px;}
+svg.genericond-genericons-5x { height:80px; width:80px;}
+svg.genericond-genericons-6x { height:96px; width:96px;}
 
 /* Changes I only want to make to Genericon'd genericons, and not anything in a theme... */
-svg.genericond-sociallogo {height:24px; width: 24px;display: inline-block;vertical-align: baseline; margin:4px}
+svg.genericond-social-logos {height:24px; width: 24px;display: inline-block;vertical-align: baseline; margin:4px}
 
 /* Alternative sizes */
-svg.genericond-sociallogo-1x { height:24px; width:24px;}
-svg.genericond-sociallogo-2x { height:36px; width:36px;}
-svg.genericond-sociallogo-3x { height:48px; width:48px;}
-svg.genericond-sociallogo-4x { height:60px; width:60px;}
-svg.genericond-sociallogo-5x { height:72px; width:72px;}
-svg.genericond-sociallogo-6x { height:84px; width:84px;}
+svg.genericond-social-logos-1x { height:24px; width:24px;}
+svg.genericond-social-logos-2x { height:36px; width:36px;}
+svg.genericond-social-logos-3x { height:48px; width:48px;}
+svg.genericond-social-logos-4x { height:60px; width:60px;}
+svg.genericond-social-logos-5x { height:72px; width:72px;}
+svg.genericond-social-logos-6x { height:84px; width:84px;}
 
 /**
  * Helper classes
