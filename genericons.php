@@ -183,8 +183,14 @@ class GenericonsHELF {
 		    } elseif ( file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' ) && $this->options['social-logos'] == 'yes' ) {
 			    $icon_type = 'social-logos';
 		    } else {
-			    $attributes['icon'] = 'stop';
-			    $icon_type = 'genericons-neue';
+			    
+			    if ( $this->options['genericons-neue'] == 'yes' ) {
+				    $attributes['icon'] = 'stop';
+				    $icon_type = 'genericons-neue';
+			    } else {
+				    $attributes['icon'] = 'wordpress';
+				    $icon_type = 'social-logos';
+			    }
 		    }			
 		}
 
