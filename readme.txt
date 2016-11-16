@@ -43,9 +43,11 @@ Great! I'm a monkey with a crayon! Seriously, though, I didn't make Genericons, 
 
 Have a desire for social icons like Twumlrbook? Submit that [directly to Social Logos](https://github.com/Automattic/social-logos/issues)
 
-= Aren't they called Genericons with an S? =
+= What's the difference between Genericons Neue, Social Logos, and 'Classic' Genericons? =
 
-Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have been genericonified!' I was in a The Guild frame of mind. Also since this is not the official plugin, I didn't want to use that slug.
+* [Genericons Neue](https://github.com/Automattic/genericons-neue) are the replacements for Genericons, using SVG instead of fonts.
+* [Social Logos](https://github.com/Automattic/social-logos) are where all the social logos like Twitter moved.
+* ['Classic' Genericons](http://genericons.com/) are the old font icon pack you know and love
 
 = Are there any known conflicts? =
 
@@ -55,7 +57,7 @@ Not at this time.
 
 On your WP dashboard, go to Appearance -> Genericon'd. The page there will list all the icons and their file names.
 
-= Can I add it to menus? =
+= Can I add them to menus? =
 
 No. You can't add shortcodes to menus at this time. There used to be a workaround with using the `icon` code, but since we're not using Font Icons anymore, you can't anymore unless you enable Legacy Font Icons.
 
@@ -102,6 +104,10 @@ svg.social-logos-twitter:hover {
 `
 
 If you wanted it to be for links only, then use `a svg.social-logos-twitter:hover` since you wrap the href around the shortcode.
+
+= Aren't they called Genericons with an S? =
+
+Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have been genericonified!' I was in a The Guild frame of mind. Also since this is not the official plugin, I didn't want to use that slug.
 
 == Screenshots ==
 

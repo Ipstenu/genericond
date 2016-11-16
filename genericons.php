@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Genericon'd
-Plugin URI: http://halfelf.org/
+Plugin URI: https://halfelf.org/plugins/genericond
 Description: Use the Genericon icons within WordPress. Icons can be inserted using either HTML or a shortcode.
 Version: 4.0.0
 Author: Mika Epstein (Ipstenu)
-Author URI: http://ipstenu.org/
+Author URI: https://ipstenu.org/
 Author Email: ipstenu@halfelf.org
 
 	Credits: Forked plugin code from Rachel Baker's Font Awesome for WordPress plugin - https://github.com/rachelbaker/Font-Awesome-WordPress-Plugin
@@ -44,6 +44,12 @@ class GenericonsHELF {
     var $options = array();
     var $option_defaults;
     static $gen_ver = '4.0.0'; // Plugin version so I can be lazy
+    
+    static $urls = array(
+		'genericons'			=> 'https://github.com/Automattic/genericons',
+		'genericons-neue'	=> 'https://github.com/Automattic/genericons-neue',
+		'social-logos'		=> 'https://github.com/Automattic/social-logos',
+    );
     
     public function __construct() {
         add_action( 'init', array( &$this, 'init' ) );
@@ -177,21 +183,27 @@ class GenericonsHELF {
 		if ( $this->options['genericons'] == 'yes' ) {
 			$icon_type = 'genericons';
 		} else {
-			// Check for files to make sure they exist and where.
-		    if ( file_exists( plugin_dir_path(__FILE__).'/icons/genericons-neue/svg/'.$attributes['icon'].'.svg' ) ) {
+			// Check for files to make sure they exist and where.			
+			if ( $this->options['genericons-neue'] == 'yes' && $this->options['social-logos'] == 'yes' ) {
+				if ( file_exists( plugin_dir_path(__FILE__).'/icons/genericons-neue/svg/'.$attributes['icon'].'.svg' ) ) {
+					$icon_type = 'genericons-neue';
+				} elseif ( file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' ) ) {
+					$icon_type = 'social-logos';
+				} else {
+					$icon_type = 'genericons-neue';
+					$attributes['icon'] = 'stop';					
+				}
+			} elseif ( $this->options['genericons-neue'] == 'yes' && $this->options['social-logos'] == 'no' ) {
 				$icon_type = 'genericons-neue';
-		    } elseif ( file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' ) && $this->options['social-logos'] == 'yes' ) {
-			    $icon_type = 'social-logos';
-		    } else {
-			    
-			    if ( $this->options['genericons-neue'] == 'yes' ) {
-				    $attributes['icon'] = 'stop';
-				    $icon_type = 'genericons-neue';
-			    } else {
-				    $attributes['icon'] = 'wordpress';
-				    $icon_type = 'social-logos';
-			    }
-		    }			
+				if ( !file_exists( plugin_dir_path(__FILE__).'/icons/genericons-neue/svg/'.$attributes['icon'].'.svg' ) ) {
+					$attributes['icon'] = 'stop';
+				}
+			} elseif ( $this->options['genericons-neue'] == 'no' && $this->options['social-logos'] == 'yes' ) {
+				$icon_type = 'social-logos';
+				if ( !file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' ) ) {
+					$attributes['icon'] = 'wordpress';
+				}
+			}
 		}
 
         // Resizing
@@ -330,7 +342,7 @@ class GenericonsHELF {
 	 * @since 4.0
 	 */
 	function genericond_settings_callback() {
-	    ?><p><?php _e('As of version 4.0, Genericon\'d defaults to using modern SVGs instead of fonts and combines the Genericon Neue pack as well as Social Logos to ensure your old code keeps working. If SVGs won\'t work for your site, you can either use classic Genericons or the legacy font packs. Be aware, those options will slow your site. It is not recommended to keep this enabled unless your circumstances require it.', 'genericons'); ?></p><?php
+		printf( __('It is recommended to use both <a href="%1$s">Genericon Neue</a> and <a href="%2$s">Social Logos</a> in order to reproduce the "feel" of <a href="%3$s">Classic Genericons</a>. If you find you need to support IE users, try using Legacy Fonts.', 'genericons'), esc_url(self::$urls['genericons-neue']), esc_url(self::$urls['social-logos']), esc_url(self::$urls['genericons']) );
 	}
 
 	/**
@@ -342,6 +354,7 @@ class GenericonsHELF {
 		?>
 		<input type="checkbox" id="genericons_options[genericons]" name="genericons_options[genericons]" value="yes" <?php 
 			echo disabled( $this->options['genericons-neue'], 'yes' );	
+			echo disabled( $this->options['social-logos'], 'yes' );
 			echo checked( $this->options['genericons'], 'yes', true ); 
 		?> >
 		<?php
@@ -437,7 +450,7 @@ class GenericonsHELF {
 	        
 	        <?php settings_errors(); ?>
 	    		
-	    		<p><?php _e( 'As of version 4.0, Genericon\'d has combined two separate icon libraries, as Genericons Neue removed support for social media. In order to adversely impact users as little as possible, the library for Social Icons was added. This should have no impact on displaying icons in shortcodes. Usage of the old div/i/span method to show icons will no longer work unless you use legacy fonts.', 'genericond' ); ?></p>
+	    		<p><?php printf( __('As of version 4.0, Genericon\'d defaults to using modern SVGs instead of fonts and combines the <a href="%1$s">Genericon Neue</a> icon pack as well as <a href="%2$s">Social Logos</a> to ensure your old code keeps working. If SVGs won\'t work for your site, you can either use <a href="%3$s">classic Genericons</a> or the legacy font packs. Be aware, those options will slow your site. It is not recommended to keep this enabled unless your circumstances require it.', 'genericons'), esc_url(self::$urls['genericons-neue']), esc_url(self::$urls['social-logos']),esc_url(self::$urls['genericons']) );  ?></p>
 
 	    		<div id="content">
 	    			<div id="glyph">
@@ -451,14 +464,13 @@ class GenericonsHELF {
 	    			</div>
 				
 				<div class="description">
-					<h2>Usage Example</h2>
-		            <p><?php _e( 'Genericons can be displayed via shortcodes.', 'genericond' ); ?></p>
-		            
-		            <p><?php _e( 'Basic Genericons:', 'genericond' ); ?><code>&#091;genericon icon=twitter&#093;</code></p>
-		            <p><?php _e( 'Color Change:', 'genericond' ); ?> <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
-		            <p><?php _e( 'Increase size:', 'genericond' ); ?> <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
-		            <p><?php _e( 'Repeat icon:', 'genericond' ); ?> <code>&#091;genericon icon=star repeat=3&#093;</code></p>
-		            <p><?php _e( 'Flip icon:', 'genericond' ); ?> <code>&#091;genericon icon=twitter rotate=flip-horizontal&#093;</code></p>
+					<h2><?php _e( 'Usage Examples:', 'genericond' ); ?></h2>
+					
+		            <p><?php _e( 'Basic:', 'genericond' ); ?><code>&#091;genericon icon=twitter&#093;</code></p>
+		            <p><?php _e( 'Color:', 'genericond' ); ?> <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
+		            <p><?php _e( 'Size:', 'genericond' ); ?> <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
+		            <p><?php _e( 'Repeat:', 'genericond' ); ?> <code>&#091;genericon icon=star repeat=3&#093;</code></p>
+		            <p><?php _e( 'Flip:', 'genericond' ); ?> <code>&#091;genericon icon=twitter rotate=flip-horizontal&#093;</code></p>
 				</div>
 	    		</div>
 
