@@ -79,6 +79,9 @@ class GenericonsHELF {
         add_action( 'admin_enqueue_scripts', array( &$this, 'register_plugin_styles' ) );
 		// Enqueue styles for admins
         add_action( 'admin_enqueue_scripts', array( &$this, 'register_admin_styles' ) );
+        
+        // Admin notices
+        add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
 
 	    // Register Settings
 		$this->register_settings();
@@ -94,6 +97,22 @@ class GenericonsHELF {
         add_shortcode( 'genericon', array( &$this, 'setup_shortcode' ) );
         add_filter( 'widget_text', 'do_shortcode' );
     }
+
+	/**
+	 *  Admin Notices
+	 *
+	 * @since 4.0
+	 */
+	function admin_notices() {
+		
+		$this->options = get_option( 'genericons_options' );
+		
+		if ( $this->options['genericons-neue'] == 'no' && $this->options['genericons'] == 'no' && $this->options['social-logos'] == 'no' ) {
+			echo '<div class="notice notice-error"><p>';
+				printf( __( 'You have no Genericons options set so no icons will load. Please <a href="%s">change your settings</a> to either Genericons Neue or Classic Genericons.', 'genericond' ), admin_url( 'themes.php?page=genericons' ) );
+			echo '</p></div>';	
+		}
+	}
 
 	/**
 	 *  Register Plugin Styles
@@ -383,25 +402,18 @@ class GenericonsHELF {
 	    
 	    // If classic, we disable social and neue. If we disable classic, we force neue.
 	    if ( $output['genericons'] == 'yes' ) {
-		    $output['social-logos']	= 'no';
-		    $output['genericons-neue']		= 'no';
-	    } else {
-		    $output['genericons-neue']		= 'yes';
+		    $output['social-logos']		= 'no';
+		    $output['genericons-neue']	= 'no';
 	    }
 
 		// Reverse! If social or neue are active, kill classic:
 	    if ( $output['social-logos'] == 'yes' || $output['genericons-neue'] == 'yes' ) {
 		    $output['genericons']	= 'no';
 	    }
-
-		// Inverse! If social AND neue are NOT active, force classic:
-	    if ( $output['social-logos'] == 'no' && $output['genericons-neue'] == 'no' ) {
-		    $output['genericons']	= 'yes';
-	    }
 	    	    
 	    // Hardcoded for now - these will be options later
-	    $output['sprites'] = 'yes';
-	    $output['minified'] = 'no';
+	    $output['sprites']	= 'yes';
+	    $output['minified']	= 'no';
 	
 		return $output;
 	}
@@ -419,7 +431,7 @@ class GenericonsHELF {
 	        
 	        <?php settings_errors(); ?>
 	    		
-	    		<p><?php _e( 'As of version 4.0, Genericon\'d has combined two separate icon libraries, as Genericons Neue removed support for social media. In order to adversely impact users as little as possible, the library for Social Icons was added. This should have no impact on displaying icons in shortcodes, however any usage of the old div/i/span method to show icons will no longer work as the font is no longer called by default.', 'genericond' ); ?></p>
+	    		<p><?php _e( 'As of version 4.0, Genericon\'d has combined two separate icon libraries, as Genericons Neue removed support for social media. In order to adversely impact users as little as possible, the library for Social Icons was added. This should have no impact on displaying icons in shortcodes. Usage of the old div/i/span method to show icons will no longer work unless you use legacy fonts.', 'genericond' ); ?></p>
 
 	    		<div id="content">
 	    			<div id="glyph">
@@ -436,8 +448,7 @@ class GenericonsHELF {
 					<h2>Usage Example</h2>
 		            <p><?php _e( 'Genericons can be displayed via shortcodes.', 'genericond' ); ?></p>
 		            
-		            <p><code>&#091;genericon icon=twitter&#093;</code></p>
-	
+		            <p><?php _e( 'Basic Genericons:', 'genericond' ); ?><code>&#091;genericon icon=twitter&#093;</code></p>
 		            <p><?php _e( 'Color Change:', 'genericond' ); ?> <code>&#091;genericon icon=twitter color=#4099FF&#093;</code></p>
 		            <p><?php _e( 'Increase size:', 'genericond' ); ?> <code>&#091;genericon icon=facebook size=4x&#093;</code></p>
 		            <p><?php _e( 'Repeat icon:', 'genericond' ); ?> <code>&#091;genericon icon=star repeat=3&#093;</code></p>

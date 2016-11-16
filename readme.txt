@@ -17,7 +17,7 @@ Genericon'd includes three icon sets:
 * [Social Logos](https://github.com/Automattic/social-logos) - A repository of all the social logos used on WordPress.com
 * [Genericons](http://genericons.com/) - Generic looking icons as a Font, suitable for a blog or simple website.
 
-By default, _Genericons Neue_ and _Social Logos_ are both active and use SVGs not fonts. If you want to go back to displaying the icons as a font, you can do so via settings.
+By default, _Genericons Neue_ and _Social Logos_ are both active and use SVG sprites, not fonts. If you want to go back to displaying the icons as a font, you can do so via settings.
 
 To use any of the Genericons icons on your WordPress site you can use basic HTML (for inserting in themes and functions) or shortcodes (for use in posts or widgets). You can adjust the size of the icons via css or, when using the shortcode, the size attribute. Default size is 16px for Genericons and 24 for Social Logos.
 
@@ -69,7 +69,7 @@ Using CSS with SVGs is weird. Instead of something like `.genericon {color:red;}
 
 = Why are some icons using `genericons` and others use `social-logos`? =
 
-Because in version 4.0, Genericons dropped support for all social media logos. Since I didn't want to leave everyone out in the cold, I pulled in the Social Logos icon set. 
+Because in version 4.0, Genericons ceased development and moved to Genericons Neue. In doing so, they dropped support for all social media logos. Since I didn't want to leave everyone out in the cold, I pulled in the Social Logos icon set. 
 
 = Okay, but I want to change color in just this one use... =
 
@@ -112,8 +112,9 @@ If you wanted it to be for links only, then use `a svg.social-logos-twitter:hove
 
 = 4.0.0 =
 
-* 2016-06
+* 2016-11
 * Complete refactor
+* Merge of Genericons Neue
 * Merge of Social Icons
 * Add option for supporting legacy fonts
 
