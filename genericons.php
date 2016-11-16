@@ -2,7 +2,7 @@
 /*
 Plugin Name: Genericon'd
 Plugin URI: http://halfelf.org/
-Description: Use the Genericon icon set within WordPress. Icons can be inserted using either HTML or a shortcode.
+Description: Use the Genericon icons within WordPress. Icons can be inserted using either HTML or a shortcode.
 Version: 4.0.0
 Author: Mika Epstein (Ipstenu)
 Author URI: http://ipstenu.org/
@@ -381,12 +381,24 @@ class GenericonsHELF {
 	            }
 	        }
 	    
-	    // If classic, we disable social and neue anyway.
+	    // If classic, we disable social and neue. If we disable classic, we force neue.
 	    if ( $output['classic'] == 'yes' ) {
 		    $output['social']	= 'no';
 		    $output['neue']		= 'no';
+	    } else {
+		    $output['neue']		= 'yes';
 	    }
-	    
+
+		// Reverse! If social or neue are active, kill classic:
+	    if ( $output['social'] == 'yes' || $output['neue'] == 'yes' ) {
+		    $output['classic']	= 'no';
+	    }
+
+		// Inverse! If social AND neue are NOT active, force classic:
+	    if ( $output['social'] == 'no' && $output['neue'] == 'no' ) {
+		    $output['classic']	= 'yes';
+	    }
+	    	    
 	    // Hardcoded for now - these will be options later
 	    $output['sprites'] = 'yes';
 	    $output['minified'] = 'no';
