@@ -53,12 +53,12 @@ class GenericonsHELF {
 
         	// Setting plugin defaults here:
 		$this->option_defaults = array(
-			'sprites'	=> 'yes',
-			'minified'	=> 'no',
-			'fonts'		=> 'no',
-			'classic'	=> 'no',
-			'neue'		=> 'yes',
-			'social'		=> 'yes',
+			'sprites'			=> 'yes',
+			'minified'			=> 'no',
+			'fonts'				=> 'no',
+			'genericons'			=> 'no',
+			'genericons-neue'	=> 'yes',
+			'social-logos'		=> 'yes',
 	    );
     }
 
@@ -106,7 +106,7 @@ class GenericonsHELF {
 	    
 		wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', self::$gen_ver ) );
 		
-		if ( $this->options['classic'] == 'yes' ) {
+		if ( $this->options['genericons'] == 'yes' ) {
 			// If classic genericons, then we use fonts and ONLY genericons.
 			wp_register_style('genericons', plugins_url('icons/genericons/genericons/genericons.css', __FILE__, false, '', self::$gen_ver) );
 			wp_enqueue_style('genericons');
@@ -118,10 +118,10 @@ class GenericonsHELF {
 				wp_register_style('social-logos', plugins_url('icons/social-logos/icon-font/social-logos.css', __FILE__, false, '', self::$gen_ver) );
 			}
 
-			if ( $this->options['social'] == 'yes' ) {
+			if ( $this->options['social-logos'] == 'yes' ) {
 				wp_enqueue_style('social-logos');
 			}
-			if ( $this->options['neue'] == 'yes' ) {
+			if ( $this->options['genericons-neue'] == 'yes' ) {
 				wp_enqueue_style('genericons-neue');
 			}
 		}
@@ -155,13 +155,13 @@ class GenericonsHELF {
 		$this->options = get_option( 'genericons_options' );
 
 		// Set Icon Types
-		if ( $this->options['classic'] == 'yes' ) {
+		if ( $this->options['genericons'] == 'yes' ) {
 			$icon_type = 'genericons';
 		} else {
 			// Check for files to make sure they exist and where.
 		    if ( file_exists( plugin_dir_path(__FILE__).'/icons/genericons-neue/svg/'.$attributes['icon'].'.svg' ) ) {
 				$icon_type = 'genericons-neue';
-		    } elseif ( file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' )) {
+		    } elseif ( file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' ) && $this->options['social-logos'] == 'yes' ) {
 			    $icon_type = 'social-logos';
 		    } else {
 			    $attributes['icon'] = 'stop';
@@ -315,9 +315,9 @@ class GenericonsHELF {
 	 */
 	function classic_genericons_callback() {
 		?>
-		<input type="checkbox" id="genericons_options[classic]" name="genericons_options[classic]" value="yes" <?php 
-			echo disabled( $this->options['neue'], 'yes' );	
-			echo checked( $this->options['classic'], 'yes', true ); 
+		<input type="checkbox" id="genericons_options[genericons]" name="genericons_options[genericons]" value="yes" <?php 
+			echo disabled( $this->options['genericons-neue'], 'yes' );	
+			echo checked( $this->options['genericons'], 'yes', true ); 
 		?> >
 		<?php
 	}
@@ -329,9 +329,9 @@ class GenericonsHELF {
 	 */
 	function genericons_neue_callback() {
 		?>
-		<input type="checkbox" id="genericons_options[neue]" name="genericons_options[neue]" value="yes" <?php 
-			echo disabled( $this->options['classic'], 'yes' );	
-			echo checked( $this->options['neue'], 'yes', true ); 
+		<input type="checkbox" id="genericons_options[genericons-neue]" name="genericons_options[genericons-neue]" value="yes" <?php 
+			echo disabled( $this->options['genericons'], 'yes' );	
+			echo checked( $this->options['genericons-neue'], 'yes', true ); 
 		?> >
 		<?php
 	}	
@@ -343,9 +343,9 @@ class GenericonsHELF {
 	 */
 	function social_logos_callback() {
 		?>
-		<input type="checkbox" id="genericons_options[social]" name="genericons_options[social]" value="yes"  <?php 
-			echo disabled( $this->options['classic'], 'yes' );	
-			echo checked( $this->options['social'], 'yes', true ); 
+		<input type="checkbox" id="genericons_options[social-logos]" name="genericons_options[social-logos]" value="yes"  <?php 
+			echo disabled( $this->options['genericons'], 'yes' );	
+			echo checked( $this->options['social-logos'], 'yes', true ); 
 		?> >
 		<?php
 	}	
@@ -358,7 +358,7 @@ class GenericonsHELF {
 	function legacy_fonts_callback() {
 		?>
 		<input type="checkbox" id="genericons_options[fonts]" name="genericons_options[fonts]" value="yes" <?php 
-			echo disabled( $this->options['classic'], 'yes' );
+			echo disabled( $this->options['genericons'], 'yes' );
 			echo checked( $this->options['fonts'], 'yes', true ); 
 		?> >
 		<?php
@@ -382,21 +382,21 @@ class GenericonsHELF {
 	        }
 	    
 	    // If classic, we disable social and neue. If we disable classic, we force neue.
-	    if ( $output['classic'] == 'yes' ) {
-		    $output['social']	= 'no';
-		    $output['neue']		= 'no';
+	    if ( $output['genericons'] == 'yes' ) {
+		    $output['social-logos']	= 'no';
+		    $output['genericons-neue']		= 'no';
 	    } else {
-		    $output['neue']		= 'yes';
+		    $output['genericons-neue']		= 'yes';
 	    }
 
 		// Reverse! If social or neue are active, kill classic:
-	    if ( $output['social'] == 'yes' || $output['neue'] == 'yes' ) {
-		    $output['classic']	= 'no';
+	    if ( $output['social-logos'] == 'yes' || $output['genericons-neue'] == 'yes' ) {
+		    $output['genericons']	= 'no';
 	    }
 
 		// Inverse! If social AND neue are NOT active, force classic:
-	    if ( $output['social'] == 'no' && $output['neue'] == 'no' ) {
-		    $output['classic']	= 'yes';
+	    if ( $output['social-logos'] == 'no' && $output['genericons-neue'] == 'no' ) {
+		    $output['genericons']	= 'yes';
 	    }
 	    	    
 	    // Hardcoded for now - these will be options later
