@@ -53,8 +53,12 @@ class GenericonsHELF {
 
         	// Setting plugin defaults here:
 		$this->option_defaults = array(
-			'genericons_fonts'		=> 'no',
-			'social_logos_fonts' 	=> 'no',
+			'sprites'	=> 'yes',
+			'minified'	=> 'no',
+			'fonts'		=> 'no',
+			'classic'	=> 'no',
+			'neue'		=> 'yes',
+			'social'		=> 'yes',
 	    );
     }
 
@@ -91,23 +95,36 @@ class GenericonsHELF {
         add_filter( 'widget_text', 'do_shortcode' );
     }
 
+	/**
+	 *  Register Plugin Styles
+	 *
+	 * @since 1.0
+	 */
     public function register_plugin_styles() {
 	    
-	    $this->options = get_option( 'genericons_options' );
+	    $this->options = wp_parse_args( get_option( 'genericons_options' ), $this->option_defaults );
 	    
 		wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', self::$gen_ver ) );
-		wp_enqueue_script( 'genericons-svg4everybody', plugins_url( 'genericons/svg-php/svg4everybody.js', __FILE__ ), array(), self::$gen_ver, false );
 		
-		if ( $this->options['genericons_fonts'] == 'yes' ) {
-			wp_register_style('genericons', plugins_url('genericons/icon-font/Genricons.css', __FILE__, false, '', self::$gen_ver) );
+		if ( $this->options['classic'] == 'yes' ) {
+			// If classic genericons, then we use fonts and ONLY genericons.
+			wp_register_style('genericons', plugins_url('icons/genericons/genericons/genericons.css', __FILE__, false, '', self::$gen_ver) );
 			wp_enqueue_style('genericons');
-		}
+		} else {
+			// If we're not using classic, we have some decisions
+			if ( $this->options['fonts'] == 'yes' ) {
+				// Use Fonts (default NO)
+				wp_register_style('genericons-neue', plugins_url('icons/genericons-neue/icon-font/Genericons-Neue.css', __FILE__, false, '', self::$gen_ver) );
+				wp_register_style('social-logos', plugins_url('icons/social-logos/icon-font/social-logos.css', __FILE__, false, '', self::$gen_ver) );
+			}
 
-		if ( $this->options['social_logos_fonts'] == 'yes' ) {
-			wp_register_style('social-logos', plugins_url('social-logos/icon-font/social-logos.css', __FILE__, false, '', self::$gen_ver) );
-			wp_enqueue_style('social-logos');
+			if ( $this->options['social'] == 'yes' ) {
+				wp_enqueue_style('social-logos');
+			}
+			if ( $this->options['neue'] == 'yes' ) {
+				wp_enqueue_style('genericons-neue');
+			}
 		}
-		
     }
 
     function register_admin_styles() {
@@ -135,19 +152,22 @@ class GenericonsHELF {
                     'title'  => ''
                 ), $params );
 
-		// Folders where images are stored
-		$genericon_folder = plugin_dir_path(__FILE__).'/genericons/svg/';
-		$socialogo_folder = plugin_dir_path(__FILE__).'/social-logos/svg/';
+		$this->options = get_option( 'genericons_options' );
 
-		// Check for files to make sure they exist and where.
-	    if ( file_exists( $genericon_folder.$attributes['icon'].'.svg' ) ) {
+		// Set Icon Types
+		if ( $this->options['classic'] == 'yes' ) {
 			$icon_type = 'genericons';
-	    } elseif ( file_exists( $socialogo_folder.$attributes['icon'].'.svg' )) {
-		    $icon_type = 'social-logos';
-	    } else {
-		    $attributes['icon'] = 'stop';
-		    $icon_type = 'genericons';
-	    }
+		} else {
+			// Check for files to make sure they exist and where.
+		    if ( file_exists( plugin_dir_path(__FILE__).'/icons/genericons-neue/svg/'.$attributes['icon'].'.svg' ) ) {
+				$icon_type = 'genericons-neue';
+		    } elseif ( file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' )) {
+			    $icon_type = 'social-logos';
+		    } else {
+			    $attributes['icon'] = 'stop';
+			    $icon_type = 'genericons-neue';
+		    }			
+		}
 
         // Resizing
         $icon_size = 'genericond-'.$icon_type.'-';
@@ -187,7 +207,12 @@ class GenericonsHELF {
         // Build the Genericon!
         $icon_styles = $icon_color; // In case I add more later? Hope I never have to, but...
         
-        $icon = $this->get_genericond( $attributes['icon'], '', true, $icon_title, $icon_size, $icon_styles, $icon_rotate, $attributes['repeat'], $icon_type); 
+        $external = true;
+        if ( $this->options['sprites'] == 'no' ) {
+	        $external = false;
+	    }
+        
+        $icon = $this->get_genericond( $attributes['icon'], '', $external, $icon_title, $icon_size, $icon_styles, $icon_rotate, $attributes['repeat'], $icon_type); 
 
 		return $icon;
     }
@@ -198,7 +223,7 @@ class GenericonsHELF {
 	 * 
 	 * @since 4.0
 	 */
-    public function get_genericond( $name, $id = null, $external = true, $title = null, $size, $styles, $rotate, $repeat, $type ) {		
+    public function get_genericond( $name, $id = null, $external = true, $title = null, $size, $styles, $rotate, $repeat  = '1', $type = 'genericons-neue' ) {		
 		$genericons_inject_sprite = null;
 		$output = null;
 	
@@ -207,28 +232,29 @@ class GenericonsHELF {
 		$attr .= ' style="' . $styles . '"';
 	
 		// If the user has passed a unique ID, output it.
-		if ( $id ) :
+		if ( $id ) {
 			$attr .= ' id="' . $id . '"';
-		endif;
-	
-		if ( ! $title ) : // Use the icon name as the title if the user hasn't set one.
+		}
+		
+		// Use the icon name as the title if the user hasn't set one.
+		if ( ! $title ) {
 			$title = $name;
-		endif;
+		} 
 	
-		if ( 'none' === $title ) : // Specify the icon is presentational.
+		// Specify the icon is presentational.
+		// Output a title and role for screen readers.
+		if ( 'none' === $title ) {
 			$attr .= ' role="presentation"';
-	
-		else : // Output a title and role for screen readers.
+		} else { 
 			$attr .= ' title="' . $title . '"';
 			$attr .= ' role="img" aria-labelledby="title"';
-		endif;
+		}
 	
 		// Print the SVG tag.
 		$return = '<svg ' . $attr . '>';
 	
 		if ( $external ) : // Default behavior; caches better.
-		
-			$return .= '<use xlink:href="' . esc_url( plugin_dir_url( __FILE__ ) ) .$type.'/svg-sprite/'.$type.'.svg#' . $name . '" />';
+			$return .= '<use xlink:href="' . esc_url( plugin_dir_url( __FILE__ ) ) .'/icons/'.$type.'/svg-sprite/'.$type.'.svg#' . $name . '" />';
 	
 		else : // Use internal method if specified.
 			$return .= '<use xlink:href="#' . $name . '" />';
@@ -261,47 +287,82 @@ class GenericonsHELF {
 	 * @since 4.0
 	 */
     function register_settings() {
-	    register_setting( 'genericons_legacy_fonts', 'genericons_options', array( $this, 'genericons_sanitize' ) );
+	    register_setting( 'genericons_settings', 'genericons_options', array( $this, 'genericons_sanitize' ) );
 
 		// The main section
-		add_settings_section( 'genericons-fonts', 'Enable Legacy Fonts', array( &$this, 'legacy_fonts_callback'), 'genericons-settings' );
+		add_settings_section( 'genericond-settings', 'Genericon\'d Custom Settings', array( &$this, 'genericond_settings_callback'), 'genericond-custom-settings' );
 
 		// The Fields
-		add_settings_field( 'lf-genericons', 'Genericons', array( &$this, 'lf_genericons_callback'), 'genericons-settings', 'genericons-fonts' );
-		add_settings_field( 'lf-social-logos', 'Social Logos', array( &$this, 'lf_social_logos_callback'), 'genericons-settings', 'genericons-fonts' );
-		
+		add_settings_field( 'genericon-neue', 'Genericons Neue', array( &$this, 'genericons_neue_callback'), 'genericond-custom-settings', 'genericond-settings' );
+		add_settings_field( 'social-logos', 'Social Logos', array( &$this, 'social_logos_callback'), 'genericond-custom-settings', 'genericond-settings' );
+		add_settings_field( 'legacy-fonts', 'Legacy Fonts', array( &$this, 'legacy_fonts_callback'), 'genericond-custom-settings', 'genericond-settings' );
+		add_settings_field( 'classic-genericons', 'Classic Genericons', array( &$this, 'classic_genericons_callback'), 'genericond-custom-settings', 'genericond-settings' );		
 	}
 
 	/**
-	 * Legacy Fonts Callback
+	 * Genericon'd Custtom Settings Callback
+	 *
+	 * @since 4.0
+	 */
+	function genericond_settings_callback() {
+	    ?><p><?php _e('As of version 4.0, Genericon\'d defaults to using modern SVGs instead of fonts and combines the Genericon Neue pack as well as Social Logos to ensure your old code keeps working. If SVGs won\'t work for your site, you can either use classic Genericons or the legacy font packs. Be aware, those options will slow your site. It is not recommended to keep this enabled unless your circumstances require it.', 'genericons'); ?></p><?php
+	}
+
+	/**
+	 * Genericon'd Custtom Settings: Classic Genericons Callback
+	 *
+	 * @since 4.0
+	 */
+	function classic_genericons_callback() {
+		?>
+		<input type="checkbox" id="genericons_options[classic]" name="genericons_options[classic]" value="yes" <?php 
+			echo disabled( $this->options['neue'], 'yes' );	
+			echo checked( $this->options['classic'], 'yes', true ); 
+		?> >
+		<?php
+	}
+
+	/**
+	 * Genericon'd Custtom Settings: Genericons Neue Callback
+	 *
+	 * @since 4.0
+	 */
+	function genericons_neue_callback() {
+		?>
+		<input type="checkbox" id="genericons_options[neue]" name="genericons_options[neue]" value="yes" <?php 
+			echo disabled( $this->options['classic'], 'yes' );	
+			echo checked( $this->options['neue'], 'yes', true ); 
+		?> >
+		<?php
+	}	
+
+	/**
+	 * Genericon'd Custtom Settings: Social Logos Callback
+	 *
+	 * @since 4.0
+	 */
+	function social_logos_callback() {
+		?>
+		<input type="checkbox" id="genericons_options[social]" name="genericons_options[social]" value="yes"  <?php 
+			echo disabled( $this->options['classic'], 'yes' );	
+			echo checked( $this->options['social'], 'yes', true ); 
+		?> >
+		<?php
+	}	
+
+	/**
+	 * Genericon'd Custtom Settings: Legacy Fonts Callback
 	 *
 	 * @since 4.0
 	 */
 	function legacy_fonts_callback() {
-	    ?><p><?php _e('Enabling legacy font-icons will ensure your old code keeps working, however it will add more weight to your site and slow it down. It is not recommended to keep this enabled.', 'genericons'); ?></p><?php
-	}
-
-	/**
-	 * Legacy Fonts: Genericons Callback
-	 *
-	 * @since 4.0
-	 */
-	function lf_genericons_callback() {
 		?>
-		<input type="checkbox" id="genericons_options[genericons_fonts]" name="genericons_options[genericons_fonts]" value="yes" <?php echo checked( $this->options['genericons_fonts'], 'yes', true ); ?> >
+		<input type="checkbox" id="genericons_options[fonts]" name="genericons_options[fonts]" value="yes" <?php 
+			echo disabled( $this->options['classic'], 'yes' );
+			echo checked( $this->options['fonts'], 'yes', true ); 
+		?> >
 		<?php
 	}
-
-	/**
-	 * Legacy Fonts: Social Logos Callback
-	 *
-	 * @since 4.0
-	 */
-	function lf_social_logos_callback() {
-		?>
-		<input type="checkbox" id="genericons_options[social_logos_fonts]" name="genericons_options[social_logos_fonts]" value="yes" <?php echo checked( $this->options['social_logos_fonts'], 'yes', true ); ?> >
-		<?php
-	}	
 
 	/**
 	 * Options sanitization and validation
@@ -319,6 +380,16 @@ class GenericonsHELF {
 		            $output[$key] = sanitize_text_field($input[$key]);
 	            }
 	        }
+	    
+	    // If classic, we disable social and neue anyway.
+	    if ( $output['classic'] == 'yes' ) {
+		    $output['social']	= 'no';
+		    $output['neue']		= 'no';
+	    }
+	    
+	    // Hardcoded for now - these will be options later
+	    $output['sprites'] = 'yes';
+	    $output['minified'] = 'no';
 	
 		return $output;
 	}
@@ -336,14 +407,14 @@ class GenericonsHELF {
 	        
 	        <?php settings_errors(); ?>
 	    		
-	    		<p><?php _e( 'As of version 4.0, Genericon\'d has combined two separate icon libraries, as the original Genericons removed support for social media. In order to adversely impact users as little as possible, the library for Social Icons was added. This should have no impact on displaying icons in shortcodes, however any usage of the old div/i/span method to show icons will no longer work as the font is no longer called by default.', 'genericond' ); ?></p>
+	    		<p><?php _e( 'As of version 4.0, Genericon\'d has combined two separate icon libraries, as Genericons Neue removed support for social media. In order to adversely impact users as little as possible, the library for Social Icons was added. This should have no impact on displaying icons in shortcodes, however any usage of the old div/i/span method to show icons will no longer work as the font is no longer called by default.', 'genericond' ); ?></p>
 
 	    		<div id="content">
 	    			<div id="glyph">
 					<form method="post" action="options.php">
 					<?php
-			            settings_fields( 'genericons_legacy_fonts' );
-			            do_settings_sections( 'genericons-settings' );
+			            settings_fields( 'genericons_settings' );
+			            do_settings_sections( 'genericond-custom-settings' );
 			            submit_button();
 					?>
 					</form>
@@ -364,18 +435,18 @@ class GenericonsHELF {
 
 			<div class="clear"></div>
 	    		
-			<h3><?php _e( 'Genericons', 'genericond' ); ?></h3>
+			<h3><?php _e( 'Genericons Neue', 'genericond' ); ?></h3>
 
-			<p><?php _e( 'The following are all the included Genericon icons, with the name listed below.', 'genericond' ); ?></p>
+			<p><?php _e( 'The following are all the included Genericons Neue icons, with the name listed below.', 'genericond' ); ?></p>
 
 			<div id="icons"><div id="iconlist">
 				<?php
 				
-				$imagepath = plugin_dir_path(__FILE__).'/genericons/svg-min/';
+				$imagepath = plugin_dir_path(__FILE__).'/icons/genericons-neue/svg-min/';
 				foreach( glob( $imagepath.'*' ) as $filename ){
 					$name  = str_replace( $imagepath, '' , $filename );
 					$name  = str_replace( '.svg', '', $name );	
-					$image = $this->get_genericond( $name, '', true, $name, '1x', '', '', '1', 'genericons');
+					$image = $this->get_genericond( $name, '', true, $name, '1x', '', '', '1', 'genericons-neue');
 					echo '<span role="img" class="genericond-icon">' . $image . $name .'</span>';
 				}
 				?>
@@ -390,7 +461,7 @@ class GenericonsHELF {
 			<div id="icons"><div id="iconlist">
 				<?php
 				
-				$imagepath = plugin_dir_path(__FILE__).'/social-logos/svg-min/';
+				$imagepath = plugin_dir_path(__FILE__).'/icons/social-logos/svg-min/';
 				foreach( glob( $imagepath.'*' ) as $filename ){
 					$name  = str_replace( $imagepath, '' , $filename );
 					$name  = str_replace( '.svg', '', $name );

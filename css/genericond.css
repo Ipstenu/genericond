@@ -2,8 +2,10 @@
 	Genericon'd Helper CSS
 */
 
-/* Changes I only want to make to Genericon'd genericons, and not anything in a theme... */
-svg.genericond-genericons {height: 16px; width: 16px;display: inline-block;vertical-align: baseline; margin:4px}
+/* CLASSIC GENERICONS */
+
+/* Changes I only want to make to Genericon'd, and not anything in a theme... */
+svg.genericond-genericons {height: 16px; width: 16px;display: inline-block;vertical-align: middle; margin:4px}
 
 /* Alternative sizes */
 svg.genericond-genericons-1x { height:16px; width:16px;}
@@ -13,7 +15,22 @@ svg.genericond-genericons-4x { height:64px; width:64px;}
 svg.genericond-genericons-5x { height:80px; width:80px;}
 svg.genericond-genericons-6x { height:96px; width:96px;}
 
+/* GENERICONS NEUE */
+
 /* Changes I only want to make to Genericon'd genericons, and not anything in a theme... */
+svg.genericond-genericons-neue {height: 16px; width: 16px;display: inline-block;vertical-align: middle; margin:4px}
+
+/* Alternative sizes */
+svg.genericond-genericons-neue-1x { height:16px; width:16px;}
+svg.genericond-genericons-neue-2x { height:32px; width:32px;}
+svg.genericond-genericons-neue-3x { height:48px; width:48px;}
+svg.genericond-genericons-neue-4x { height:64px; width:64px;}
+svg.genericond-genericons-neue-5x { height:80px; width:80px;}
+svg.genericond-genericons-neue-6x { height:96px; width:96px;}
+
+/* SOCIAL LOGOS */
+
+/* Changes I only want to make to Genericon'd, and not anything in a theme... */
 svg.genericond-social-logos {height:24px; width: 24px;display: inline-block;vertical-align: baseline; margin:4px}
 
 /* Alternative sizes */
@@ -29,7 +46,7 @@ svg.genericond-social-logos-6x { height:84px; width:84px;}
  */
 
 svg.genericond-rotate-normal {
-	
+	/* Nothing here on purpose */
 }
 
 svg.genericond-rotate-90 {

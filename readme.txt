@@ -11,10 +11,13 @@ Enables easy use of the Genericons and Social Logo icon sets from within WordPre
 
 == Description ==
 
-Genericon'd includes two icon sets:
+Genericon'd includes three icon sets:
 
-* [Genericons](http://genericons.com/) - Generic looking icons, suitable for a blog or simple website.
+* [Genericons Neue](https://github.com/Automattic/genericons-neue) - Generic looking icons, suitable for a blog or simple website.
 * [Social Logos](https://github.com/Automattic/social-logos) - A repository of all the social logos used on WordPress.com
+* [Genericons](http://genericons.com/) - Generic looking icons as a Font, suitable for a blog or simple website.
+
+By default, _Genericons Neue_ and _Social Logos_ are both active and use SVGs not fonts. If you want to go back to displaying the icons as a font, you can do so via settings.
 
 To use any of the Genericons icons on your WordPress site you can use basic HTML (for inserting in themes and functions) or shortcodes (for use in posts or widgets). You can adjust the size of the icons via css or, when using the shortcode, the size attribute. Default size is 16px for Genericons and 24 for Social Logos.
 
@@ -36,7 +39,7 @@ For example, to display the Twitter icon: `[genericon icon=twitter]`
 
 = I have an idea for an icon! =
 
-Great! I'm a monkey with a crayon! Seriously, though, I didn't make Genericons, I have no artistic ability to make more. If I did, we'd have a unicorn one. Please file issues and requests for new icons <a href="https://github.com/Automattic/Genericons/issues">directly with Genericons</a>.
+Great! I'm a monkey with a crayon! Seriously, though, I didn't make Genericons, I have no artistic ability to make more. If I did, we'd have a unicorn one. Please file issues and requests for new icons <a href="https://github.com/Automattic/genericons-neue/issues">directly with Genericons</a>.
 
 Have a desire for social icons like Twumlrbook? Submit that [directly to Social Logos](https://github.com/Automattic/social-logos/issues)
 
