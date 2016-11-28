@@ -5,16 +5,21 @@
     Credit: Genericons.com
 */
 
-h2::before {
-content: '\f205';
-font-family: Genericons;
-font-size: 32px;
-vertical-align: bottom;
+span.genericond-icon {
+	width: 80px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    word-wrap: break-word;
+}
+span.genericond-icon svg {
+    width: 75px;
+    height: 75px;
 }
 
 /* Iconlist */
 #icons {
-	padding: 20px 0;
+	padding: 4px 0;
 }
 
 #icons #iconlist {
@@ -44,9 +49,6 @@ vertical-align: bottom;
 }
 
 #icons .genericon {
-	font-size: 32px;
-	width: 32px;
-	height: 32px;
 	padding: 10px;
 }
 
