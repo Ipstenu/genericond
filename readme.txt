@@ -21,9 +21,7 @@ By default, _Genericons Neue_ and _Social Logos_ are both active and use SVG spr
 
 To use any of the Genericons icons on your WordPress site you can use basic HTML (for inserting in themes and functions) or shortcodes (for use in posts or widgets). You can adjust the size of the icons via css or, when using the shortcode, the size attribute. Default size is 16px for Genericons and 24 for Social Logos.
 
-To display the Twitter icon:
-
-Shortcode: `[genericon icon=twitter]`
+To display the Twitter icon: `[genericon icon=twitter]`
 
 == Installation ==
 
@@ -137,4 +135,4 @@ Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have be
 * Fix broken rotations (which apparently was broken ages ago and no one noticed, sorry)
 
 == Upgrade Notice ==
-Version 4.0 and up uses New Genericons which NO LONGER uses font icons by default.
+Version 4.0 and up uses New Genericons which NO LONGER uses font icons by default. While I have done my best to ensure upgrades are seamless, please make sure to look at your site where Genericon'd is in use to be sure.
