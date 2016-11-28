@@ -10,7 +10,7 @@ Author Email: ipstenu@halfelf.org
 
 	Credits: Forked plugin code from Rachel Baker's Font Awesome for WordPress plugin - https://github.com/rachelbaker/Font-Awesome-WordPress-Plugin
 
-	License: MIT
+	License: GPLv2
 
 	Copyright (C) 2013 - 2016 Mika Epstein (ipstenu@halfelf.org)
 
