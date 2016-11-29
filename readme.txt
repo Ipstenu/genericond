@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,10 @@ Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have be
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 4.0.1 =
+* 2016-11
+* Settings wouldn't save
 
 = 4.0.0 =
 

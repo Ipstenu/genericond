@@ -3,7 +3,7 @@
 Plugin Name: Genericon'd
 Plugin URI: https://halfelf.org/plugins/genericond
 Description: Use the Genericon icons within WordPress. Icons can be inserted using either HTML or a shortcode.
-Version: 4.0.0
+Version: 4.0.1
 Author: Mika Epstein (Ipstenu)
 Author URI: https://ipstenu.org/
 Author Email: ipstenu@halfelf.org
@@ -40,7 +40,7 @@ Author Email: ipstenu@halfelf.org
 class GenericonsHELF {
 
 	// Holds option data.
-    static $gen_ver = '4.0.0'; // Plugin version so I can be lazy
+    static $gen_ver = '4.0.1'; // Plugin version so I can be lazy
     
     static $option_defaults = array(
 		'sprites'			=> 'yes',
@@ -50,6 +50,8 @@ class GenericonsHELF {
 		'genericons-neue'	=> 'yes',
 		'social-logos'		=> 'yes',
 	);
+	
+	static $options;
     
     static $urls = array(
 		'genericons'			=> 'https://github.com/Automattic/genericons',
@@ -61,6 +63,9 @@ class GenericonsHELF {
         add_action( 'init', array( &$this, 'init' ) );
         add_action( 'admin_init', array( &$this, 'admin_init' ) );
         add_action( 'admin_menu', array( &$this, 'add_settings_menu'));
+        
+        // Set defaults for later use
+        self::$options = get_option( 'genericons_options', self::$option_defaults );
     }
 
 	/**
@@ -103,9 +108,8 @@ class GenericonsHELF {
 	 * @since 4.0
 	 */
 	function admin_notices() {
-		$$options =  get_option( 'genericons_options', self::$option_defaults);
 		
-		if ( $$options['genericons-neue'] == 'no' && $$options['genericons'] == 'no' && $$options['social-logos'] == 'no' ) {
+		if ( self::$options['genericons-neue'] == 'no' && self::$options['genericons'] == 'no' && $options['social-logos'] == 'no' ) {
 			echo '<div class="notice notice-error"><p>';
 				printf( __( 'You have no Genericons options set so no icons will load. Please <a href="%s">change your settings</a> to either Genericons Neue or Classic Genericons.', 'genericond' ), admin_url( 'themes.php?page=genericons' ) );
 			echo '</p></div>';	
@@ -117,26 +121,25 @@ class GenericonsHELF {
 	 *
 	 * @since 1.0
 	 */
-    public function register_plugin_styles() {
-	    $options = get_option( 'genericons_options', self::$option_defaults );
+    public function register_plugin_styles() {	   
 		wp_enqueue_style( 'genericond', plugins_url( 'css/genericond.css', __FILE__ , '', self::$gen_ver ) );
 		
-		if ( $options['genericons'] == 'yes' ) {
+		if ( self::$options['genericons'] == 'yes' ) {
 			// If classic genericons, then we use fonts and ONLY genericons.
 			wp_register_style('genericons', plugins_url('icons/genericons/genericons/genericons.css', __FILE__, false, '', self::$gen_ver) );
 			wp_enqueue_style('genericons');
 		} else {
 			// If we're not using classic, we have some decisions
-			if ( $options['fonts'] == 'yes' ) {
+			if ( self::$options['fonts'] == 'yes' ) {
 				// Use Fonts (default NO)
 				wp_register_style('genericons-neue', plugins_url('icons/genericons-neue/icon-font/Genericons-Neue.css', __FILE__, false, '', self::$gen_ver) );
 				wp_register_style('social-logos', plugins_url('icons/social-logos/icon-font/social-logos.css', __FILE__, false, '', self::$gen_ver) );
 			}
 
-			if ( $options['social-logos'] == 'yes' ) {
+			if ( self::$options['social-logos'] == 'yes' ) {
 				wp_enqueue_style('social-logos');
 			}
-			if ( $options['genericons-neue'] == 'yes' ) {
+			if ( self::$options['genericons-neue'] == 'yes' ) {
 				wp_enqueue_style('genericons-neue');
 			}
 		}
@@ -167,14 +170,12 @@ class GenericonsHELF {
                     'title'  => ''
         ), $params );
 
-		$options = get_option( 'genericons_options', self::$option_defaults );
-
 		// Set Icon Types
-		if ( $$options['genericons'] == 'yes' ) {
+		if ( self::$options['genericons'] == 'yes' ) {
 			$icon_type = 'genericons';
 		} else {
 			// Check for files to make sure they exist and where.			
-			if ( $$options['genericons-neue'] == 'yes' && $$options['social-logos'] == 'yes' ) {
+			if ( self::$options['genericons-neue'] == 'yes' && self::$options['social-logos'] == 'yes' ) {
 				if ( file_exists( plugin_dir_path(__FILE__).'/icons/genericons-neue/svg/'.$attributes['icon'].'.svg' ) ) {
 					$icon_type = 'genericons-neue';
 				} elseif ( file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' ) ) {
@@ -183,12 +184,12 @@ class GenericonsHELF {
 					$icon_type = 'genericons-neue';
 					$attributes['icon'] = 'stop';					
 				}
-			} elseif ( $$options['genericons-neue'] == 'yes' && $$options['social-logos'] == 'no' ) {
+			} elseif ( self::$options['genericons-neue'] == 'yes' && self::$options['social-logos'] == 'no' ) {
 				$icon_type = 'genericons-neue';
 				if ( !file_exists( plugin_dir_path(__FILE__).'/icons/genericons-neue/svg/'.$attributes['icon'].'.svg' ) ) {
 					$attributes['icon'] = 'stop';
 				}
-			} elseif ( $$options['genericons-neue'] == 'no' && $$options['social-logos'] == 'yes' ) {
+			} elseif ( $options['genericons-neue'] == 'no' && $options['social-logos'] == 'yes' ) {
 				$icon_type = 'social-logos';
 				if ( !file_exists( plugin_dir_path(__FILE__).'/icons/social-logos/svg/'.$attributes['icon'].'.svg' ) ) {
 					$attributes['icon'] = 'wordpress';
@@ -235,7 +236,7 @@ class GenericonsHELF {
         $icon_styles = $icon_color; // In case I add more later? Hope I never have to, but...
         
         $external = true;
-        if ( $$options['sprites'] == 'no' ) {
+        if ( self::$options['sprites'] == 'no' ) {
 	        $external = false;
 	    }
         
@@ -343,9 +344,9 @@ class GenericonsHELF {
 	function classic_genericons_callback() {
 		?>
 		<input type="checkbox" id="genericons_options[genericons]" name="genericons_options[genericons]" value="yes" <?php 
-			echo disabled( $$options['genericons-neue'], 'yes' );	
-			echo disabled( $$options['social-logos'], 'yes' );
-			echo checked( $$options['genericons'], 'yes', true ); 
+			echo disabled( self::$options['genericons-neue'], 'yes' );	
+			echo disabled( self::$options['social-logos'], 'yes' );
+			echo checked( self::$options['genericons'], 'yes', true ); 
 		?> >
 		<?php
 	}
@@ -358,8 +359,8 @@ class GenericonsHELF {
 	function genericons_neue_callback() {
 		?>
 		<input type="checkbox" id="genericons_options[genericons-neue]" name="genericons_options[genericons-neue]" value="yes" <?php 
-			echo disabled( $$options['genericons'], 'yes' );	
-			echo checked( $$options['genericons-neue'], 'yes', true ); 
+			echo disabled( self::$options['genericons'], 'yes' );	
+			echo checked( self::$options['genericons-neue'], 'yes', true ); 
 		?> >
 		<?php
 	}	
@@ -372,8 +373,8 @@ class GenericonsHELF {
 	function social_logos_callback() {
 		?>
 		<input type="checkbox" id="genericons_options[social-logos]" name="genericons_options[social-logos]" value="yes"  <?php 
-			echo disabled( $$options['genericons'], 'yes' );	
-			echo checked( $$options['social-logos'], 'yes', true ); 
+			echo disabled( self::$options['genericons'], 'yes' );	
+			echo checked( self::$options['social-logos'], 'yes', true ); 
 		?> >
 		<?php
 	}	
@@ -386,8 +387,8 @@ class GenericonsHELF {
 	function legacy_fonts_callback() {
 		?>
 		<input type="checkbox" id="genericons_options[fonts]" name="genericons_options[fonts]" value="yes" <?php 
-			echo disabled( $$options['genericons'], 'yes' );
-			echo checked( $$options['fonts'], 'yes', true ); 
+			echo disabled( self::$options['genericons'], 'yes' );
+			echo checked( self::$options['fonts'], 'yes', true ); 
 		?> >
 		<?php
 	}
@@ -399,9 +400,8 @@ class GenericonsHELF {
 	 * @since 2.0
 	 */
 	function genericons_sanitize( $input ) {
-	    	$options = $$options;
 	
-	    	foreach ($options as $key=>$value) {
+	    	foreach (self::$options as $key=>$value) {
 	            if ( !isset($input[$key]) || is_null( $input[$key] ) || $input[$key] == '0' ) {
 		            $output[$key] = 'no';
 	            } else {
