@@ -3,7 +3,7 @@ Contributors: Ipstenu
 Tags: icons, genericons, font icon, UI
 Requires at least: 3.9
 Tested up to: 4.9
-Stable tag: 4.0.1
+Stable tag: 4.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ Genericon'd includes three icon sets:
 
 * [Genericons Neue](https://github.com/Automattic/genericons-neue) - Generic looking icons, suitable for a blog or simple website.
 * [Social Logos](https://github.com/Automattic/social-logos) - A repository of all the social logos used on WordPress.com
-* [Genericons](http://genericons.com/) - Generic looking icons as a Font, suitable for a blog or simple website.
+* [Genericons Classic](https://github.com/Automattic/genericons) - The original! Generic looking icons as a Font, suitable for a blog or simple website.
 
 By default, _Genericons Neue_ and _Social Logos_ are both active and use SVG sprites, not fonts. If you want to go back to displaying the icons as a font, you can do so via settings.
 
@@ -113,6 +113,10 @@ Yes, but Genericon'd is a Zaboo-esque sort of way of saying 'These icons have be
 2. Zaboo, patron avatar of Genericon'd
 
 == Changelog ==
+
+= 4.0.5 =
+* 2018-01
+* Updating some icons
 
 = 4.0.1 =
 * 2016-11
