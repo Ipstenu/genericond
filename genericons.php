@@ -403,7 +403,7 @@ class GenericonsHELF {
 				} else {
 					$output[$key] = sanitize_text_field($input[$key]);
 				}
-		    }
+			}
 		
 		// If classic, we disable social and neue. If we disable classic, we force neue.
 		if ( $output['genericons'] == 'yes' ) {
