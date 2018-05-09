@@ -504,7 +504,7 @@ class GenericonsHELF {
 	 */
 	public function plugin_links($links, $file) {
 		if ($file == plugin_basename(__FILE__)) {
-				$donate_link = '<a href="https://ko-fi.com/A236CENl/">Donate</a>';
+				$donate_link = '<a href="https://ko-fi.com/A236CEN/">Donate</a>';
 				$links[] = $donate_link;
 		}
 		return $links;

@@ -23,6 +23,10 @@ To use any of the Genericons icons on your WordPress site you can use basic HTML
 
 To display the Twitter icon: `[genericon icon=twitter]`
 
+= Privacy Policy =
+
+No remote calls are made with this plugin and no data is tracked.
+
 == Installation ==
 
 Install as a normal WordPress Plugin.
